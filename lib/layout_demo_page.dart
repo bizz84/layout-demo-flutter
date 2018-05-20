@@ -101,24 +101,27 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        elevation: 1.0,
+        bottom: PreferredSize(
+          preferredSize: Size(375.0, 300.0),
+          child: buildOptionsPage(),
+        )
       ),
-      //drawer: Drawer(child: OptionsPage()),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            color: Colors.yellow,
-              child: buildContent()
-          ),
-          Expanded(child: Container()),
-          OptionsPage(
-            onUpdateLayout: updateLayout,
-            onUpdateMainAxisAlignment: updateMainAxisAlignment,
-            onUpdateCrossAxisAlignment: updateCrossAxisAlignment,
-            onUpdateMainAxisSize: updateMainAxisSize,
-          ),
-        ],
+      body:
+      Container(
+          color: Colors.yellow,
+          child: buildContent()
       ),
+
+    );
+  }
+
+  Widget buildOptionsPage() {
+    return OptionsPage(
+      onUpdateLayout: updateLayout,
+      onUpdateMainAxisAlignment: updateMainAxisAlignment,
+      onUpdateCrossAxisAlignment: updateCrossAxisAlignment,
+      onUpdateMainAxisSize: updateMainAxisSize,
     );
   }
 }
@@ -147,14 +150,14 @@ class OptionsPage extends StatelessWidget {
           ),
           OptionListItem(
             title: 'Cross Axis Alignment',
-            values: ['start', 'end', 'center', /*'stretch', 'baseline'*/],
+            values: ['start', 'end', 'center', 'stretch', /*'baseline'*/],
             onChange: onUpdateCrossAxisAlignment,
           ),
-//          OptionListItem(
-//            title: 'Main Axis Size',
-//            values: ['min', 'max'],
-//            onChange: onUpdateMainAxisSize,
-//          ),
+          OptionListItem(
+            title: 'Main Axis Size',
+            values: ['min', 'max'],
+            onChange: onUpdateMainAxisSize,
+          ),
       ]);
   }
 }
@@ -191,7 +194,6 @@ class OptionListItemState extends State<OptionListItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.orange[300],
       child: Column(
         children: [
           Text(widget.title),

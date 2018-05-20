@@ -196,6 +196,7 @@ class OptionListItemState extends State<OptionListItem> {
     return Container(
       child: Column(
         children: [
+          Divider(color: Colors.black54),
           Text(widget.title),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,14 +205,13 @@ class OptionListItemState extends State<OptionListItem> {
                 icon: Icon(Icons.arrow_back),
                 onPressed: previous,
               ),
-              Text(widget.values[valueIndex]),
+              Text(widget.values[valueIndex], style: TextStyle(fontWeight: FontWeight.w700)),
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: next,
               ),
             ],
           ),
-          Divider(color: Colors.black54),
         ]),
       );
   }

@@ -77,9 +77,9 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
         children: [
-          Icon(Icons.star, size: 50.0),
-          Icon(Icons.star, size: 100.0),
-          Icon(Icons.star, size: 50.0),
+          Icon(Icons.stars, size: 50.0),
+          Icon(Icons.stars, size: 100.0),
+          Icon(Icons.stars, size: 50.0),
         ],
       );
     } else {
@@ -88,9 +88,9 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
         children: [
-          Icon(Icons.star, size: 50.0),
-          Icon(Icons.star, size: 100.0),
-          Icon(Icons.star, size: 50.0),
+          Icon(Icons.stars, size: 50.0),
+          Icon(Icons.stars, size: 100.0),
+          Icon(Icons.stars, size: 50.0),
         ],
       );
     }

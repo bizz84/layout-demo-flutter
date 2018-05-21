@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:layout_demo_flutter/layout_attributes.dart';
+import 'package:layout_demo_flutter/row_column_layout_attributes.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 
 class RowColumnPage extends StatefulWidget {
@@ -10,72 +10,75 @@ class RowColumnPage extends StatefulWidget {
 }
 
 class _RowColumnPageState extends State<RowColumnPage> {
-  bool isRow = true;
-  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start;
-  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
-  MainAxisSize mainAxisSize = MainAxisSize.min;
+  bool _isRow = true;
+  MainAxisAlignment _mainAxisAlignment = MainAxisAlignment.start;
+  CrossAxisAlignment _crossAxisAlignment = CrossAxisAlignment.start;
+  MainAxisSize _mainAxisSize = MainAxisSize.min;
 
-  void updateLayout(int index) {
-    isRow = index == 0;
-    setState(() {});
+  void _updateLayout(int index) {
+    setState(() {
+      _isRow = index == 0;
+    });
   }
 
-  void updateMainAxisAlignment(int index) {
+  MainAxisAlignment _mainAxisAlignmentFromIndex(int index) {
     switch (index) {
       case 0:
-        mainAxisAlignment = MainAxisAlignment.start;
-        break;
+        return MainAxisAlignment.start;
       case 1:
-        mainAxisAlignment = MainAxisAlignment.end;
-        break;
+        return MainAxisAlignment.end;
       case 2:
-        mainAxisAlignment = MainAxisAlignment.center;
-        break;
+        return MainAxisAlignment.center;
       case 3:
-        mainAxisAlignment = MainAxisAlignment.spaceBetween;
-        break;
+        return MainAxisAlignment.spaceBetween;
       case 4:
-        mainAxisAlignment = MainAxisAlignment.spaceAround;
-        break;
+        return MainAxisAlignment.spaceAround;
       case 5:
-        mainAxisAlignment = MainAxisAlignment.spaceEvenly;
-        break;
+        return MainAxisAlignment.spaceEvenly;
     }
-    setState(() {});
+    return MainAxisAlignment.start;
   }
 
-  void updateCrossAxisAlignment(int index) {
+  void _updateMainAxisAlignment(int index) {
+    setState(() {
+      _mainAxisAlignment = _mainAxisAlignmentFromIndex(index);
+    });
+  }
+
+  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) {
     switch (index) {
       case 0:
-        crossAxisAlignment = CrossAxisAlignment.start;
-        break;
+        return CrossAxisAlignment.start;
       case 1:
-        crossAxisAlignment = CrossAxisAlignment.end;
-        break;
+        return CrossAxisAlignment.end;
       case 2:
-        crossAxisAlignment = CrossAxisAlignment.center;
-        break;
+        return CrossAxisAlignment.center;
       case 3:
-        crossAxisAlignment = CrossAxisAlignment.stretch;
-        break;
+        return CrossAxisAlignment.stretch;
       case 4:
-        crossAxisAlignment = CrossAxisAlignment.baseline;
-        break;
+        return CrossAxisAlignment.baseline;
     }
-    setState(() {});
+    return CrossAxisAlignment.start;
   }
 
-  void updateMainAxisSize(int index) {
-    mainAxisSize = index == 0 ? MainAxisSize.min : MainAxisSize.max;
-    setState(() {});
+  void _updateCrossAxisAlignment(int index) {
+    setState(() {
+      _crossAxisAlignment = _crossAxisAlignmentFromIndex(index);
+    });
+  }
+
+  void _updateMainAxisSize(int index) {
+    setState(() {
+      _mainAxisSize = index == 0 ? MainAxisSize.min : MainAxisSize.max;
+    });
   }
 
   Widget buildContent() {
-    if (isRow) {
+    if (_isRow) {
       return Row(
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: mainAxisSize,
+        mainAxisAlignment: _mainAxisAlignment,
+        crossAxisAlignment: _crossAxisAlignment,
+        mainAxisSize: _mainAxisSize,
         children: [
           Icon(Icons.stars, size: 50.0),
           Icon(Icons.stars, size: 100.0),
@@ -84,9 +87,9 @@ class _RowColumnPageState extends State<RowColumnPage> {
       );
     } else {
       return Column(
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: mainAxisSize,
+        mainAxisAlignment: _mainAxisAlignment,
+        crossAxisAlignment: _crossAxisAlignment,
+        mainAxisSize: _mainAxisSize,
         children: [
           Icon(Icons.stars, size: 50.0),
           Icon(Icons.stars, size: 100.0),
@@ -100,23 +103,23 @@ class _RowColumnPageState extends State<RowColumnPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(layoutName(LayoutType.rowColumn)),
-          elevation: 1.0,
-          bottom: PreferredSize(
-            preferredSize: Size(375.0, 150.0),
-            child: buildOptionsPage(),
-          )),
-      //drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
+        title: Text(layoutName(LayoutType.rowColumn)),
+        elevation: 1.0,
+        bottom: PreferredSize(
+          preferredSize: Size(375.0, 150.0),
+          child: buildLayoutAttributesPage(),
+        ),
+      ),
       body: Container(color: Colors.yellow, child: buildContent()),
     );
   }
 
-  Widget buildOptionsPage() {
-    return LayoutAttributes(
-      onUpdateLayout: updateLayout,
-      onUpdateMainAxisAlignment: updateMainAxisAlignment,
-      onUpdateCrossAxisAlignment: updateCrossAxisAlignment,
-      onUpdateMainAxisSize: updateMainAxisSize,
+  Widget buildLayoutAttributesPage() {
+    return RowColumnLayoutAttributes(
+      onUpdateLayout: _updateLayout,
+      onUpdateMainAxisAlignment: _updateMainAxisAlignment,
+      onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
+      onUpdateMainAxisSize: _updateMainAxisSize,
     );
   }
 }

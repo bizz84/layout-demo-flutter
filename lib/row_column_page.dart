@@ -106,15 +106,15 @@ class _RowColumnPageState extends State<RowColumnPage> {
         title: Text(layoutName(LayoutType.rowColumn)),
         elevation: 1.0,
         bottom: PreferredSize(
-          preferredSize: Size(375.0, 150.0),
-          child: buildLayoutAttributesPage(),
+          preferredSize: Size(0.0, 160.0),
+          child: _buildLayoutAttributesPage(),
         ),
       ),
       body: Container(color: Colors.yellow, child: buildContent()),
     );
   }
 
-  Widget buildLayoutAttributesPage() {
+  Widget _buildLayoutAttributesPage() {
     return RowColumnLayoutAttributes(
       onUpdateLayout: _updateLayout,
       onUpdateMainAxisAlignment: _updateMainAxisAlignment,

@@ -50,8 +50,8 @@ class _StackPageState extends State<StackPage> {
         title: Text(layoutName(LayoutType.stack)),
         elevation: 1.0,
         bottom: PreferredSize(
-          preferredSize: Size(375.0, 150.0),
-          child: buildLayoutAttributesPage(),
+          preferredSize: Size(0.0, 80.0),
+          child: _buildLayoutAttributesPage(),
         ),
       ),
       body: Center(
@@ -85,8 +85,8 @@ class _StackPageState extends State<StackPage> {
     );
   }
 
-  Widget buildLayoutAttributesPage() {
-    return new StackLayoutAttributes(
+  Widget _buildLayoutAttributesPage() {
+    return StackLayoutAttributes(
       onUpdateAlignment: updateAlignment,
     );
   }

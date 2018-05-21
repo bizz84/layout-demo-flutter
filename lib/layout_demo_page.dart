@@ -136,31 +136,30 @@ class OptionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // todo
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(flex: 1, child: Column(
           children: <Widget>[
-            OptionListItem(
+            LayoutAttribute(
               title: 'Layout',
               values: ['row', 'column'],
               onChange: onUpdateLayout,
             ),
-            OptionListItem(
+            LayoutAttribute(
               title: 'Main Axis Size',
               values: ['min', 'max'],
               onChange: onUpdateMainAxisSize,
             ),
           ])),
         Expanded(flex: 1, child: Column(children: [
-          OptionListItem(
+          LayoutAttribute(
             title: 'Main Axis Alignment',
             values: ['start', 'end', 'center', 'space\nbetween', 'space\naround', 'space\nevenly'],
             onChange: onUpdateMainAxisAlignment,
           ),
-          OptionListItem(
+          LayoutAttribute(
             title: 'Cross Axis Alignment',
             values: ['start', 'end', 'center', 'stretch', /*'baseline'*/],
             onChange: onUpdateCrossAxisAlignment,
@@ -170,17 +169,17 @@ class OptionsPage extends StatelessWidget {
   }
 }
 
-class OptionListItem extends StatefulWidget {
-  OptionListItem({this.title, this.values, this.onChange});
+class LayoutAttribute extends StatefulWidget {
+  LayoutAttribute({this.title, this.values, this.onChange});
   final String title;
   final List<String> values;
   final ValueChanged<int> onChange;
 
   @override
-  State<StatefulWidget> createState() => OptionListItemState();
+  State<StatefulWidget> createState() => LayoutAttributeState();
 }
 
-class OptionListItemState extends State<OptionListItem> {
+class LayoutAttributeState extends State<LayoutAttribute> {
 
   int valueIndex = 0;
 

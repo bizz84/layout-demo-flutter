@@ -10,7 +10,7 @@ Oh, and the demo app itself is built with - guess what - a combination of Flutte
 
 # Table of Contents
 
-- [Row / Column](#rowColumn)
+- [Row / Column](#row--column)
 - [Stack](#stack)
 - [Expanded](#expanded)
 - [Padding](#padding)

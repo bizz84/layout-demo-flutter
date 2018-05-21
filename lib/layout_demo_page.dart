@@ -103,7 +103,7 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
         title: Text(widget.title),
         elevation: 1.0,
         bottom: PreferredSize(
-          preferredSize: Size(375.0, 300.0),
+          preferredSize: Size(375.0, 150.0),
           child: buildOptionsPage(),
         )
       ),
@@ -136,16 +136,28 @@ class OptionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: <Widget>[
-          OptionListItem(
-            title: 'Layout',
-            values: ['row', 'column'],
-            onChange: onUpdateLayout,
-          ),
+    // todo
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(flex: 1, child: Column(
+          children: <Widget>[
+            OptionListItem(
+              title: 'Layout',
+              values: ['row', 'column'],
+              onChange: onUpdateLayout,
+            ),
+            OptionListItem(
+              title: 'Main Axis Size',
+              values: ['min', 'max'],
+              onChange: onUpdateMainAxisSize,
+            ),
+          ])),
+        Expanded(flex: 1, child: Column(children: [
           OptionListItem(
             title: 'Main Axis Alignment',
-            values: ['start', 'end', 'center', 'spaceBetween', 'spaceAround', 'spaceEvenly'],
+            values: ['start', 'end', 'center', 'space\nbetween', 'space\naround', 'space\nevenly'],
             onChange: onUpdateMainAxisAlignment,
           ),
           OptionListItem(
@@ -153,11 +165,7 @@ class OptionsPage extends StatelessWidget {
             values: ['start', 'end', 'center', 'stretch', /*'baseline'*/],
             onChange: onUpdateCrossAxisAlignment,
           ),
-          OptionListItem(
-            title: 'Main Axis Size',
-            values: ['min', 'max'],
-            onChange: onUpdateMainAxisSize,
-          ),
+        ])),
       ]);
   }
 }
@@ -205,7 +213,12 @@ class OptionListItemState extends State<OptionListItem> {
                 icon: Icon(Icons.arrow_back),
                 onPressed: previous,
               ),
-              Text(widget.values[valueIndex], style: TextStyle(fontWeight: FontWeight.w700)),
+              Text(
+                  widget.values[valueIndex],
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+              ),
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: next,

@@ -23,7 +23,7 @@ class _ExpandedPageState extends State<ExpandedPage> {
     );
   }
 
-  Widget _buildCenteredText(
+  Widget _buildBox(
       {int points, Color color, Color textColor = Colors.white}) {
     return Expanded(
       flex: points,
@@ -43,12 +43,12 @@ class _ExpandedPageState extends State<ExpandedPage> {
   Widget _buildContent() {
     return Column(
       children: [
-        _buildCenteredText(points: 8, color: Colors.red),
+        _buildBox(points: 8, color: Colors.red),
         Expanded(
           flex: 5,
           child: Row(
             children: [
-              _buildCenteredText(points: 5, color: Colors.indigo),
+              _buildBox(points: 5, color: Colors.indigo),
               Expanded(
                 flex: 3,
                 child: Column(
@@ -61,16 +61,16 @@ class _ExpandedPageState extends State<ExpandedPage> {
                             flex: 1,
                             child: Column(
                               children: [
-                                _buildCenteredText(points: 1, color: Colors.green),
-                                _buildCenteredText(points: 1, color: Colors.blue),
+                                _buildBox(points: 1, color: Colors.green),
+                                _buildBox(points: 1, color: Colors.blue),
                               ],
                             ),
                           ),
-                          _buildCenteredText(points: 2, color: Colors.brown),
+                          _buildBox(points: 2, color: Colors.brown),
                         ],
                       ),
                     ),
-                    _buildCenteredText(points: 3, color: Colors.purple),
+                    _buildBox(points: 3, color: Colors.purple),
                   ],
                 ),
               ),

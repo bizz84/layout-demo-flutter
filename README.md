@@ -1,6 +1,6 @@
 # Flutter Layout: The Definitive Guide
 
-### Your favourite Flutter layouts - right in your pocket. 😉
+### Super Useful Flutter Layouts - Right in Your Pocket. 😉
 
 This is an interactive demo app showing how to use the most common layout objects in Flutter.
 

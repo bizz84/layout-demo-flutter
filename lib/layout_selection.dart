@@ -7,6 +7,15 @@ enum LayoutSelection {
   expanded
 }
 
+String layoutName(LayoutSelection layoutSelection) {
+  switch (layoutSelection) {
+    case LayoutSelection.rowColumn: return 'Row / Column';
+    case LayoutSelection.stack: return 'Stack';
+    case LayoutSelection.expanded: return 'Expanded';
+    default: return '';
+  }
+}
+
 class LayoutSelectionPage extends StatelessWidget {
   LayoutSelectionPage({this.onSelected});
   final ValueChanged<LayoutSelection> onSelected;

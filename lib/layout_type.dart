@@ -1,16 +1,15 @@
-
-enum LayoutType {
-  rowColumn,
-  stack,
-  expanded
-}
+enum LayoutType { rowColumn, stack, expanded }
 
 String layoutName(LayoutType layoutType) {
   switch (layoutType) {
-    case LayoutType.rowColumn: return 'Row / Column';
-    case LayoutType.stack: return 'Stack';
-    case LayoutType.expanded: return 'Expanded';
-    default: return '';
+    case LayoutType.rowColumn:
+      return 'Row / Column';
+    case LayoutType.stack:
+      return 'Stack';
+    case LayoutType.expanded:
+      return 'Expanded';
+    default:
+      return '';
   }
 }
 

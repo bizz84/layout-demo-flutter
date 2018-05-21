@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 
-
 class ExpandedPage extends StatefulWidget {
   ExpandedPage({Key key}) : super(key: key);
 
@@ -10,7 +9,6 @@ class ExpandedPage extends StatefulWidget {
 }
 
 class _ExpandedPageState extends State<ExpandedPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

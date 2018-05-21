@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attributes.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 
-
 class RowColumnPage extends StatefulWidget {
   RowColumnPage({Key key}) : super(key: key);
 
@@ -11,17 +10,16 @@ class RowColumnPage extends StatefulWidget {
 }
 
 class _RowColumnPageState extends State<RowColumnPage> {
-
   bool isRow = true;
   MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start;
   CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
   MainAxisSize mainAxisSize = MainAxisSize.min;
 
-
   void updateLayout(int index) {
     isRow = index == 0;
     setState(() {});
   }
+
   void updateMainAxisAlignment(int index) {
     switch (index) {
       case 0:
@@ -45,6 +43,7 @@ class _RowColumnPageState extends State<RowColumnPage> {
     }
     setState(() {});
   }
+
   void updateCrossAxisAlignment(int index) {
     switch (index) {
       case 0:
@@ -65,6 +64,7 @@ class _RowColumnPageState extends State<RowColumnPage> {
     }
     setState(() {});
   }
+
   void updateMainAxisSize(int index) {
     mainAxisSize = index == 0 ? MainAxisSize.min : MainAxisSize.max;
     setState(() {});
@@ -105,14 +105,9 @@ class _RowColumnPageState extends State<RowColumnPage> {
           bottom: PreferredSize(
             preferredSize: Size(375.0, 150.0),
             child: buildOptionsPage(),
-          )
-      ),
+          )),
       //drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
-      body: Container(
-          color: Colors.yellow,
-          child: buildContent()
-      ),
-
+      body: Container(color: Colors.yellow, child: buildContent()),
     );
   }
 
@@ -125,4 +120,3 @@ class _RowColumnPageState extends State<RowColumnPage> {
     );
   }
 }
-

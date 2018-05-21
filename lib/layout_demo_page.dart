@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:layout_demo_flutter/layout_attributes.dart';
+import 'package:layout_demo_flutter/layout_selection.dart';
 
 
 class LayoutDemoPage extends StatefulWidget {
@@ -96,6 +98,10 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
     }
   }
 
+  void onLayoutSelected(LayoutSelection selection) {
+    print('$selection');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,17 +113,17 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
           child: buildOptionsPage(),
         )
       ),
-      body:
-      Container(
-          color: Colors.yellow,
-          child: buildContent()
+      drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
+      body: Container(
+        color: Colors.yellow,
+        child: buildContent()
       ),
 
     );
   }
 
   Widget buildOptionsPage() {
-    return OptionsPage(
+    return LayoutAttributes(
       onUpdateLayout: updateLayout,
       onUpdateMainAxisAlignment: updateMainAxisAlignment,
       onUpdateCrossAxisAlignment: updateCrossAxisAlignment,
@@ -126,105 +132,3 @@ class _LayoutDemoPageState extends State<LayoutDemoPage> {
   }
 }
 
-
-class OptionsPage extends StatelessWidget {
-  OptionsPage({this.onUpdateLayout, this.onUpdateMainAxisAlignment, this.onUpdateCrossAxisAlignment, this.onUpdateMainAxisSize});
-  final ValueChanged<int> onUpdateLayout;
-  final ValueChanged<int> onUpdateMainAxisAlignment;
-  final ValueChanged<int> onUpdateCrossAxisAlignment;
-  final ValueChanged<int> onUpdateMainAxisSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Expanded(flex: 1, child: Column(
-          children: <Widget>[
-            LayoutAttribute(
-              title: 'Layout',
-              values: ['row', 'column'],
-              onChange: onUpdateLayout,
-            ),
-            LayoutAttribute(
-              title: 'Main Axis Size',
-              values: ['min', 'max'],
-              onChange: onUpdateMainAxisSize,
-            ),
-          ])),
-        Expanded(flex: 1, child: Column(children: [
-          LayoutAttribute(
-            title: 'Main Axis Alignment',
-            values: ['start', 'end', 'center', 'space\nbetween', 'space\naround', 'space\nevenly'],
-            onChange: onUpdateMainAxisAlignment,
-          ),
-          LayoutAttribute(
-            title: 'Cross Axis Alignment',
-            values: ['start', 'end', 'center', 'stretch', /*'baseline'*/],
-            onChange: onUpdateCrossAxisAlignment,
-          ),
-        ])),
-      ]);
-  }
-}
-
-class LayoutAttribute extends StatefulWidget {
-  LayoutAttribute({this.title, this.values, this.onChange});
-  final String title;
-  final List<String> values;
-  final ValueChanged<int> onChange;
-
-  @override
-  State<StatefulWidget> createState() => LayoutAttributeState();
-}
-
-class LayoutAttributeState extends State<LayoutAttribute> {
-
-  int valueIndex = 0;
-
-  void next() {
-    valueIndex = valueIndex + 1 < widget.values.length ? valueIndex + 1 : 0;
-    update();
-  }
-
-  void previous() {
-    valueIndex = valueIndex > 0 ? valueIndex - 1 : widget.values.length - 1;
-    update();
-  }
-
-  void update() {
-    widget.onChange(valueIndex);
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Divider(color: Colors.black54),
-          Text(widget.title),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: previous,
-              ),
-              Text(
-                  widget.values[valueIndex],
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w700),
-              ),
-              IconButton(
-                icon: Icon(Icons.arrow_forward),
-                onPressed: next,
-              ),
-            ],
-          ),
-        ]),
-      );
-  }
-}

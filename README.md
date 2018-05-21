@@ -2,11 +2,11 @@
 
 ### Super Useful Flutter Layouts - Right in Your Pocket. 😉
 
-This is an interactive demo app showing how to use the most common layout objects in Flutter.
+This is an interactive demo app showing how to use the most common layouts in Flutter.
 
-You can run this project on your simulator or device. 
+You can run this project on your simulator or device.
 
-Oh, and the demo app itself is built with - guess what - a combination of Flutter layouts.
+Oh, and the demo app itself is built with - guess what - a combination of Flutter layouts. So Meta! 😎
 
 ### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
 

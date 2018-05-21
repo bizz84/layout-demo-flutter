@@ -1,8 +1,9 @@
-# layout_demo_flutter
+# Flutter Layout: The Definitive guide
 
-A new Flutter project.
+This is an interactive demo app showing the most common layout objects in Flutter.
 
-## Getting Started
+You can run this project on your simulator or device. Which means you can have all your favourite Flutter layouts in your pocket. 😉
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Oh, and the demo app itself is built with - guess what - a combination of Flutter layouts.
+
+

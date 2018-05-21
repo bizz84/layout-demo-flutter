@@ -18,8 +18,66 @@ class _ExpandedPageState extends State<ExpandedPage> {
       ),
       //drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
       body: Container(
-        color: Colors.yellow,
+        child: _buildContent(),
       ),
+    );
+  }
+
+  Widget _buildCenteredText(
+      {int points, Color color, Color textColor = Colors.white}) {
+    return Expanded(
+      flex: points,
+      child: Container(
+        constraints: BoxConstraints.expand(),
+        color: color,
+        child: Center(
+          child: Text(
+            '$points',
+            style: TextStyle(fontSize: 32.0, color: textColor),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent() {
+    return Column(
+      children: [
+        _buildCenteredText(points: 8, color: Colors.red),
+        Expanded(
+          flex: 5,
+          child: Row(
+            children: [
+              _buildCenteredText(points: 5, color: Colors.indigo),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Column(
+                              children: [
+                                _buildCenteredText(points: 1, color: Colors.green),
+                                _buildCenteredText(points: 1, color: Colors.blue),
+                              ],
+                            ),
+                          ),
+                          _buildCenteredText(points: 2, color: Colors.brown),
+                        ],
+                      ),
+                    ),
+                    _buildCenteredText(points: 3, color: Colors.purple),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

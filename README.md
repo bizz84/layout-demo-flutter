@@ -1,6 +1,6 @@
 # Flutter Layout: The Definitive Guide
 
-### Keep all your favourite Flutter layouts in your pocket. 😉
+### Your favourite Flutter layouts - right in your pocket. 😉
 
 This is an interactive demo app showing how to use the most common layout objects in Flutter.
 
@@ -34,7 +34,7 @@ Oh, and the demo app itself is built with - guess what - a combination of Flutte
 
 ## Expanded
 
-Tags: Fibonacci, Golden Ratio. 
+Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: Fibonacci, Golden Ratio). 
 
 - [Expanded](https://docs.flutter.io/flutter/widgets/Expanded-class.html)
 

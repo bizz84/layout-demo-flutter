@@ -8,6 +8,8 @@ You can run this project on your simulator or device.
 
 Oh, and the demo app itself is built with - guess what - a combination of Flutter layouts.
 
+### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
+
 # Table of Contents
 
 - [Row / Column](#row--column)
@@ -46,6 +48,8 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 - [SizedBox](https://docs.flutter.io/flutter/widgets/SizedBox-class.html)
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/padding.png" width="320">
+
+### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
 
 ### [License: MIT](LICENSE.md)
 

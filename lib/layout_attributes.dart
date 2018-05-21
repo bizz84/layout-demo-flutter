@@ -14,30 +14,31 @@ class LayoutAttributes extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(flex: 1, child: Column(
-              children: <Widget>[
-                LayoutAttributeSelector(
-                  title: 'Layout',
-                  values: ['row', 'column'],
-                  onChange: onUpdateLayout,
-                ),
-                LayoutAttributeSelector(
-                  title: 'Main Axis Size',
-                  values: ['min', 'max'],
-                  onChange: onUpdateMainAxisSize,
-                ),
-              ])),
-          Expanded(flex: 1, child: Column(children: [
-            LayoutAttributeSelector(
-              title: 'Main Axis Alignment',
-              values: ['start', 'end', 'center', 'space\nbetween', 'space\naround', 'space\nevenly'],
-              onChange: onUpdateMainAxisAlignment,
-            ),
-            LayoutAttributeSelector(
-              title: 'Cross Axis Alignment',
-              values: ['start', 'end', 'center', 'stretch', /*'baseline'*/],
-              onChange: onUpdateCrossAxisAlignment,
-            ),
-          ])),
+            children: <Widget>[
+              LayoutAttributeSelector(
+                title: 'Layout',
+                values: ['row', 'column'],
+                onChange: onUpdateLayout,
+              ),
+              LayoutAttributeSelector(
+                title: 'Main Axis Size',
+                values: ['min', 'max'],
+                onChange: onUpdateMainAxisSize,
+              ),
+            ])),
+          Expanded(flex: 1, child: Column(
+            children: [
+              LayoutAttributeSelector(
+                title: 'Main Axis Alignment',
+                values: ['start', 'end', 'center', 'space\nbetween', 'space\naround', 'space\nevenly'],
+                onChange: onUpdateMainAxisAlignment,
+              ),
+              LayoutAttributeSelector(
+                title: 'Cross Axis Alignment',
+                values: ['start', 'end', 'center', 'stretch', /*'baseline'*/],
+                onChange: onUpdateCrossAxisAlignment,
+              ),
+            ])),
         ]);
   }
 }
@@ -75,29 +76,29 @@ class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-          children: [
-            Divider(color: Colors.black54),
-            Text(widget.title),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: previous,
-                ),
-                Text(
-                  widget.values[valueIndex],
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w700),
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward),
-                  onPressed: next,
-                ),
-              ],
-            ),
-          ]),
+        children: [
+          Divider(color: Colors.black54),
+          Text(widget.title),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: previous,
+              ),
+              Text(
+                widget.values[valueIndex],
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
+              IconButton(
+                icon: Icon(Icons.arrow_forward),
+                onPressed: next,
+              ),
+            ],
+          ),
+        ]),
     );
   }
 }

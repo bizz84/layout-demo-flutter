@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attributes.dart';
-import 'package:layout_demo_flutter/layout_selection.dart';
+import 'package:layout_demo_flutter/layout_type.dart';
 
 
 class RowColumnPage extends StatefulWidget {
@@ -100,7 +100,7 @@ class _RowColumnPageState extends State<RowColumnPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(layoutName(LayoutSelection.rowColumn)),
+          title: Text(layoutName(LayoutType.rowColumn)),
           elevation: 1.0,
           bottom: PreferredSize(
             preferredSize: Size(375.0, 150.0),

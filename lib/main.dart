@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:layout_demo_flutter/layout_demo_page.dart';
+import 'package:layout_demo_flutter/main_page.dart';
 
 void main() => runApp(new MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: LayoutDemoPage(),
+      home: MainPage(),
     );
   }
 }

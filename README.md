@@ -23,14 +23,14 @@ Oh, and the demo app itself is built with - guess what - a combination of Flutte
 - [MainAxisSize](https://docs.flutter.io/flutter/rendering/MainAxisSize-class.html)
 - [CrossAxisAlignment](https://docs.flutter.io/flutter/rendering/CrossAxisAlignment-class.html)
 
-![](screenshots/row-column.png)
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/row-column.png" width="320">
 
 ## Stack
 
 - [Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
 - [AlignmentDirectional](https://docs.flutter.io/flutter/painting/AlignmentDirectional-class.html)
 
-![](screenshots/stack.png)
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/stack.png" width="320">
 
 ## Expanded
 
@@ -38,14 +38,14 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 - [Expanded](https://docs.flutter.io/flutter/widgets/Expanded-class.html)
 
-![](screenshots/expanded.png)
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/expanded.png" width="320">
 
 ## Padding
 
 - [Expanded](https://docs.flutter.io/flutter/widgets/Expanded-class.html)
 - [SizedBox](https://docs.flutter.io/flutter/widgets/SizedBox-class.html)
 
-![](screenshots/padding.png)
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/padding.png" width="320">
 
 ### [License: MIT](LICENSE.md)
 

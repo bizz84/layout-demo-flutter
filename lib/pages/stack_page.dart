@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/stack_layout_attributes.dart';
+import 'package:layout_demo_flutter/pages/stack_layout_attributes.dart';
 
 class StackPage extends StatefulWidget {
   StackPage({Key key}) : super(key: key);

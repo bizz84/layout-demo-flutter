@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:layout_demo_flutter/row_column_layout_attributes.dart';
+import 'package:layout_demo_flutter/pages/row_column_layout_attributes.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 
 class RowColumnPage extends StatefulWidget {

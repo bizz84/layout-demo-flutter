@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:layout_demo_flutter/expanded_page.dart';
+import 'package:layout_demo_flutter/pages/expanded_page.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/row_column_page.dart';
-import 'package:layout_demo_flutter/stack_page.dart';
+import 'package:layout_demo_flutter/pages/row_column_page.dart';
+import 'package:layout_demo_flutter/pages/stack_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/pages/expanded_page.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
+import 'package:layout_demo_flutter/pages/padding_page.dart';
 import 'package:layout_demo_flutter/pages/row_column_page.dart';
 import 'package:layout_demo_flutter/pages/stack_page.dart';
 
@@ -31,6 +32,9 @@ class _MainPageState extends State<MainPage> {
       case 2:
         _onLayoutSelected(LayoutType.expanded);
         break;
+      case 3:
+        _onLayoutSelected(LayoutType.padding);
+        break;
     }
   }
 
@@ -38,15 +42,20 @@ class _MainPageState extends State<MainPage> {
     return _layoutSelection == layoutSelection ? Colors.orange : Colors.grey;
   }
 
-  BottomNavigationBarItem _buildTabItem(
+  BottomNavigationBarItem _buildItem(
       {IconData icon, LayoutType layoutSelection}) {
     String text = layoutName(layoutSelection);
     return BottomNavigationBarItem(
-      icon: Icon(icon,
-          color: _colorTabMatching(layoutSelection: layoutSelection)),
-      title: Text(text,
-          style: TextStyle(
-              color: _colorTabMatching(layoutSelection: layoutSelection))),
+      icon: Icon(
+        icon,
+        color: _colorTabMatching(layoutSelection: layoutSelection),
+      ),
+      title: Text(
+        text,
+        style: TextStyle(
+          color: _colorTabMatching(layoutSelection: layoutSelection),
+        ),
+      ),
     );
   }
 
@@ -58,6 +67,8 @@ class _MainPageState extends State<MainPage> {
         return StackPage();
       case LayoutType.expanded:
         return ExpandedPage();
+      case LayoutType.padding:
+        return PaddingPage();
     }
     return null;
   }
@@ -67,12 +78,14 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: _buildBody(),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: [
-          _buildTabItem(
-              icon: Icons.dehaze, layoutSelection: LayoutType.rowColumn),
-          _buildTabItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
-          _buildTabItem(
+          _buildItem(icon: Icons.dehaze, layoutSelection: LayoutType.rowColumn),
+          _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
+          _buildItem(
               icon: Icons.line_weight, layoutSelection: LayoutType.expanded),
+          _buildItem(
+              icon: Icons.format_line_spacing, layoutSelection: LayoutType.padding),
         ],
         onTap: _onSelectTab,
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
+import 'package:layout_demo_flutter/pages/appbar_builder.dart';
 
 class VerticalPadding extends StatelessWidget {
   VerticalPadding({
@@ -41,9 +42,8 @@ class PaddingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(layoutName(LayoutType.padding)),
-        elevation: 1.0,
+      appBar: AppBarBuilder.build(
+        layoutType: LayoutType.padding,
       ),
       //drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
       body: Column(

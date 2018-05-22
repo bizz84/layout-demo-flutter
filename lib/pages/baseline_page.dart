@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
+import 'package:layout_demo_flutter/pages/appbar_builder.dart';
 
 class BaselinePage extends StatelessWidget {
   BaselinePage({Key key}) : super(key: key);
@@ -7,11 +8,9 @@ class BaselinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(layoutName(LayoutType.baseline)),
-        elevation: 1.0,
+      appBar: AppBarBuilder.build(
+        layoutType: LayoutType.baseline,
       ),
-      //drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
       body: Container(
         padding: EdgeInsets.all(15.0),
         child: _buildContent(),

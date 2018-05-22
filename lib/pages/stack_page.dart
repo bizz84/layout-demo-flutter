@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
+import 'package:layout_demo_flutter/pages/appbar_builder.dart';
 import 'package:layout_demo_flutter/pages/stack_layout_attributes.dart';
 
 class StackPage extends StatefulWidget {
@@ -133,9 +134,8 @@ class _StackPageState extends State<StackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(layoutName(LayoutType.stack)),
-        elevation: 1.0,
+      appBar: AppBarBuilder.build(
+        layoutType: LayoutType.stack,
         bottom: PreferredSize(
           preferredSize: Size(0.0, 80.0),
           child: _buildLayoutAttributesPage(),

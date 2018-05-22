@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:layout_demo_flutter/pages/row_column_layout_attributes.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
+import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/row_column_layout_attributes.dart';
 
 class RowColumnPage extends StatefulWidget {
   RowColumnPage({Key key}) : super(key: key);
@@ -102,9 +103,8 @@ class _RowColumnPageState extends State<RowColumnPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(layoutName(LayoutType.rowColumn)),
-        elevation: 1.0,
+      appBar: AppBarBuilder.build(
+        layoutType: LayoutType.rowColumn,
         bottom: PreferredSize(
           preferredSize: Size(0.0, 160.0),
           child: _buildLayoutAttributesPage(),

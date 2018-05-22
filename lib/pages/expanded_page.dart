@@ -18,8 +18,7 @@ class ExpandedPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBox(
-      {int points, Color color, Color textColor = Colors.white}) {
+  Widget _buildBox({int points, Color color, Color textColor = Colors.white}) {
     return Expanded(
       flex: points,
       child: Container(
@@ -35,44 +34,71 @@ class ExpandedPage extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
-    return Column(
-      children: [
-        _buildBox(points: 8, color: Colors.red),
-        Expanded(
-          flex: 5,
-          child: Row(
-            children: [
-              _buildBox(points: 5, color: Colors.indigo),
-              Expanded(
-                flex: 3,
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Column(
-                              children: [
-                                _buildBox(points: 1, color: Colors.green),
-                                _buildBox(points: 1, color: Colors.blue),
-                              ],
-                            ),
-                          ),
-                          _buildBox(points: 2, color: Colors.brown),
-                        ],
-                      ),
-                    ),
-                    _buildBox(points: 3, color: Colors.purple),
-                  ],
-                ),
-              ),
-            ],
+  Size _goldenRatio(BoxConstraints constraints) {
+    if (constraints.maxHeight / constraints.maxWidth > 13.0 / 8.0) {
+      double height = constraints.maxWidth * 13.0 / 8.0;
+      return Size(constraints.maxWidth, height);
+    } else {
+      double width = constraints.maxHeight * 8.0 / 13.0;
+      return Size(width, constraints.maxHeight);
+    }
+  }
+
+  Widget _centeredLayout({Widget child}) {
+    return LayoutBuilder(builder: (content, constraints) {
+      Size size = _goldenRatio(constraints);
+      return Center(
+        child: Container(
+          constraints: BoxConstraints(
+            maxWidth: size.width,
+            maxHeight: size.height,
           ),
+          child: child,
         ),
-      ],
+      );
+    });
+  }
+
+  Widget _buildContent() {
+    return _centeredLayout(
+      child: Column(
+        children: [
+          _buildBox(points: 8, color: Colors.red),
+          Expanded(
+            flex: 5,
+            child: Row(
+              children: [
+                _buildBox(points: 5, color: Colors.indigo),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                children: [
+                                  _buildBox(points: 1, color: Colors.green),
+                                  _buildBox(points: 1, color: Colors.blue),
+                                ],
+                              ),
+                            ),
+                            _buildBox(points: 2, color: Colors.brown),
+                          ],
+                        ),
+                      ),
+                      _buildBox(points: 3, color: Colors.purple),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

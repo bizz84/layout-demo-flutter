@@ -100,8 +100,8 @@ class _StackPageState extends State<StackPage> {
             ),
           ),
           Positioned(
-            right: 20.0,
-            top: 20.0,
+            right: 40.0,
+            top: 40.0,
             width: 100.0,
             height: 100.0,
             child: Container(
@@ -109,8 +109,8 @@ class _StackPageState extends State<StackPage> {
             ),
           ),
           Positioned(
-            left: 20.0,
-            bottom: 20.0,
+            left: 40.0,
+            bottom: 40.0,
             width: 100.0,
             height: 100.0,
             child: Container(

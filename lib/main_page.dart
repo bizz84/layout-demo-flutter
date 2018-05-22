@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:layout_demo_flutter/pages/baseline_page.dart';
 import 'package:layout_demo_flutter/pages/expanded_page.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/padding_page.dart';
@@ -27,12 +28,15 @@ class _MainPageState extends State<MainPage> {
         _onLayoutSelected(LayoutType.rowColumn);
         break;
       case 1:
-        _onLayoutSelected(LayoutType.stack);
+        _onLayoutSelected(LayoutType.baseline);
         break;
       case 2:
-        _onLayoutSelected(LayoutType.expanded);
+        _onLayoutSelected(LayoutType.stack);
         break;
       case 3:
+        _onLayoutSelected(LayoutType.expanded);
+        break;
+      case 4:
         _onLayoutSelected(LayoutType.padding);
         break;
     }
@@ -63,6 +67,8 @@ class _MainPageState extends State<MainPage> {
     switch (_layoutSelection) {
       case LayoutType.rowColumn:
         return RowColumnPage();
+      case LayoutType.baseline:
+        return BaselinePage();
       case LayoutType.stack:
         return StackPage();
       case LayoutType.expanded:
@@ -80,7 +86,8 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: [
-          _buildItem(icon: Icons.dehaze, layoutSelection: LayoutType.rowColumn),
+          _buildItem(icon: Icons.view_headline, layoutSelection: LayoutType.rowColumn),
+          _buildItem(icon: Icons.format_size, layoutSelection: LayoutType.baseline),
           _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
           _buildItem(
               icon: Icons.line_weight, layoutSelection: LayoutType.expanded),

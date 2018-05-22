@@ -2,17 +2,18 @@
 
 ### Super Useful Flutter Layouts - Right in Your Pocket. 😉
 
-This is an interactive demo app showing how to use the most common layouts in Flutter.
+This app shows you how to use the most common layouts in Flutter.
 
 You can run this project on your simulator or device.
 
-Oh, and the demo app itself is built with - guess what - a combination of Flutter layouts. So Meta! 😎
+Oh, and the app itself is built with - guess what - a combination of Flutter layouts. So Meta! 😎
 
 ### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
 
 # Table of Contents
 
 - [Row / Column](#row--column)
+- [Baseline](#baseline)
 - [Stack](#stack)
 - [Expanded](#expanded)
 - [Padding](#padding)
@@ -27,6 +28,12 @@ Oh, and the demo app itself is built with - guess what - a combination of Flutte
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/row-column.png" width="320">
 
+## Baseline
+
+- [Baseline](https://docs.flutter.io/flutter/widgets/Baseline-class.html)
+
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/baseline.png" width="320">
+
 ## Stack
 
 - [Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
@@ -39,6 +46,7 @@ Oh, and the demo app itself is built with - guess what - a combination of Flutte
 Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: Fibonacci, Golden Ratio). 
 
 - [Expanded](https://docs.flutter.io/flutter/widgets/Expanded-class.html)
+- [LayoutBuilder](https://docs.flutter.io/flutter/widgets/LayoutBuilder-class.html)
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/expanded.png" width="320">
 

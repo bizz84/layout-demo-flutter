@@ -11,6 +11,7 @@ class StackPage extends StatefulWidget {
 
 class _StackPageState extends State<StackPage> {
 
+  bool _useAlignment = true;
   AlignmentDirectional _alignmentDirectional = AlignmentDirectional.topStart;
 
   AlignmentDirectional alignmentFromIndex(int index) {
@@ -43,6 +44,92 @@ class _StackPageState extends State<StackPage> {
     });
   }
 
+  void updateType(int index) {
+    setState(() {
+      _useAlignment = index == 0;
+    });
+  }
+
+  Widget _buildStack() {
+    if (_useAlignment) {
+      return Stack(
+        alignment: _alignmentDirectional,
+        children: <Widget>[
+          SizedBox(
+            width: 300.0,
+            height: 300.0,
+            child: Container(
+              color: Colors.green,
+            ),
+          ),
+          SizedBox(
+            width: 200.0,
+            height: 200.0,
+            child: Container(
+              color: Colors.yellow,
+            ),
+          ),
+          SizedBox(
+            width: 100.0,
+            height: 100.0,
+            child: Container(
+              color: Colors.red,
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Stack(
+        alignment: AlignmentDirectional.center,
+        children: <Widget>[
+          SizedBox(
+            width: 300.0,
+            height: 300.0,
+            child: Container(
+              color: Colors.yellow,
+            ),
+          ),
+          Positioned(
+            left: 20.0,
+            top: 20.0,
+            width: 100.0,
+            height: 100.0,
+            child: Container(
+              color: Colors.indigo,
+            ),
+          ),
+          Positioned(
+            right: 20.0,
+            top: 20.0,
+            width: 100.0,
+            height: 100.0,
+            child: Container(
+              color: Colors.red,
+            ),
+          ),
+          Positioned(
+            left: 20.0,
+            bottom: 20.0,
+            width: 100.0,
+            height: 100.0,
+            child: Container(
+              color: Colors.green,
+            ),
+          ),
+          Positioned(
+            bottom: 20.0,
+            right: 20.0,
+            width: 100.0,
+            height: 100.0,
+            child: Container(
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,38 +142,14 @@ class _StackPageState extends State<StackPage> {
         ),
       ),
       body: Center(
-        child: Stack(
-          alignment: _alignmentDirectional,
-          children: <Widget>[
-            SizedBox(
-              width: 300.0,
-              height: 300.0,
-              child: Container(
-                color: Colors.green,
-              ),
-            ),
-            SizedBox(
-              width: 200.0,
-              height: 200.0,
-              child: Container(
-                color: Colors.yellow,
-              ),
-            ),
-            SizedBox(
-              width: 100.0,
-              height: 100.0,
-              child: Container(
-                color: Colors.red,
-              ),
-            ),
-          ],
-        ),
+        child: _buildStack(),
       ),
     );
   }
 
   Widget _buildLayoutAttributesPage() {
     return StackLayoutAttributes(
+      onUpdateType: updateType,
       onUpdateAlignment: updateAlignment,
     );
   }

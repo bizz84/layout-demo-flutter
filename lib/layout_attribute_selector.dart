@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class LayoutAttributeSelector extends StatefulWidget {
-  LayoutAttributeSelector({this.title, this.values, this.onChange});
+  LayoutAttributeSelector({
+    this.title,
+    this.values,
+    this.disabled = false,
+    this.onChange,
+  });
 
   final String title;
   final List<String> values;
+  final bool disabled;
   final ValueChanged<int> onChange;
 
   @override
@@ -39,18 +45,23 @@ class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
+              padding: EdgeInsets.all(4.0),
               icon: Icon(Icons.arrow_back),
-              onPressed: previous,
+              onPressed: widget.disabled ? null : previous,
             ),
             Text(
               widget.values[valueIndex],
               maxLines: 2,
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.w700),
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: widget.disabled ? Colors.black26 : Colors.black87,
+              ),
             ),
             IconButton(
+              padding: EdgeInsets.all(4.0),
               icon: Icon(Icons.arrow_forward),
-              onPressed: next,
+              onPressed: widget.disabled ? null : next,
             ),
           ],
         ),

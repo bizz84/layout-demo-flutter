@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attribute_selector.dart';
 
-class StackLayoutAttributes extends StatelessWidget {
-  StackLayoutAttributes({this.onUpdateAlignment});
+class StackLayoutAttributes extends StatefulWidget {
+  StackLayoutAttributes({this.onUpdateType, this.onUpdateAlignment});
 
+  final ValueChanged<int> onUpdateType;
   final ValueChanged<int> onUpdateAlignment;
+
+  @override
+  State<StatefulWidget> createState() => StackLayoutAttributesState();
+}
+class StackLayoutAttributesState extends State<StackLayoutAttributes> {
+
+  bool _alignmentDisabled = false;
+
+  void _updateType(int index) {
+    widget.onUpdateType(index);
+    setState(() {
+      _alignmentDisabled = index == 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +29,30 @@ class StackLayoutAttributes extends StatelessWidget {
       children: [
         Expanded(
           child: LayoutAttributeSelector(
+            title: 'Type',
+            values: [
+              'align',
+              'position',
+            ],
+            onChange: _updateType,
+          ),
+        ),
+        Expanded(
+          child: LayoutAttributeSelector(
             title: 'Alignment',
             values: [
-              'topStart',
-              'topCenter',
-              'topEnd',
-              'centerStart',
+              'top\nstart',
+              'top\ncenter',
+              'top\nend',
+              'center\nstart',
               'center',
-              'centerEnd',
-              'bottomStart',
-              'bottomCenter',
-              'bottomEnd',
+              'center\nend',
+              'bottom\nstart',
+              'bottom\ncenter',
+              'bottom\nend',
             ],
-            onChange: onUpdateAlignment,
+            disabled: _alignmentDisabled,
+            onChange: widget.onUpdateAlignment,
           ),
         ),
       ],

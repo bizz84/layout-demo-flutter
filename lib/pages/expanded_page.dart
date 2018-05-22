@@ -35,11 +35,12 @@ class ExpandedPage extends StatelessWidget {
   }
 
   Size _goldenRatio(BoxConstraints constraints) {
-    if (constraints.maxHeight / constraints.maxWidth > 13.0 / 8.0) {
-      double height = constraints.maxWidth * 13.0 / 8.0;
+    double ratio = 13.0 / 8.0;
+    if (constraints.maxHeight / constraints.maxWidth > ratio) {
+      double height = constraints.maxWidth * ratio;
       return Size(constraints.maxWidth, height);
     } else {
-      double width = constraints.maxHeight * 8.0 / 13.0;
+      double width = constraints.maxHeight / ratio;
       return Size(width, constraints.maxHeight);
     }
   }

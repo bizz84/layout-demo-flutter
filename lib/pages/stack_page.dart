@@ -81,7 +81,7 @@ class _StackPageState extends State<StackPage> {
       );
     } else {
       return Stack(
-        alignment: AlignmentDirectional.center,
+        alignment: _alignmentDirectional,
         children: <Widget>[
           SizedBox(
             width: 300.0,

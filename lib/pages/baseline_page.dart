@@ -1,15 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/baseline_layout_attributes.dart';
 
-class BaselinePage extends StatelessWidget {
+class BaselinePage extends StatefulWidget {
   BaselinePage({Key key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => BaselinePageState();
+}
+class BaselinePageState extends State<BaselinePage> {
+
+  CrossAxisAlignment _crossAxisAlignment = CrossAxisAlignment.baseline;
+
+  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) {
+    switch (index) {
+      case 0:
+        return CrossAxisAlignment.baseline;
+      case 1:
+        return CrossAxisAlignment.start;
+      case 2:
+        return CrossAxisAlignment.end;
+      case 3:
+        return CrossAxisAlignment.center;
+      case 4:
+        return CrossAxisAlignment.stretch;
+    }
+    return CrossAxisAlignment.start;
+  }
+
+  void _updateCrossAxisAlignment(int index) {
+    setState(() {
+      _crossAxisAlignment = _crossAxisAlignmentFromIndex(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarBuilder.build(
         layoutType: LayoutType.baseline,
+        bottom: PreferredSize(
+          preferredSize: Size(0.0, 80.0),
+          child: _buildLayoutAttributesPage(),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(15.0),
@@ -22,7 +56,7 @@ class BaselinePage extends StatelessWidget {
     return Column(
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline,
+          crossAxisAlignment: _crossAxisAlignment,
           textBaseline: TextBaseline.alphabetic,
           children: [
             Text(
@@ -75,4 +109,11 @@ class BaselinePage extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildLayoutAttributesPage() {
+    return BaselineLayoutAttributes(
+      onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
+    );
+  }
+
 }

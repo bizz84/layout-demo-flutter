@@ -31,6 +31,7 @@ Oh, and the app itself is built with - guess what - a combination of Flutter lay
 ## Baseline
 
 - [Baseline](https://docs.flutter.io/flutter/widgets/Baseline-class.html)
+- [CrossAxisAlignment](https://docs.flutter.io/flutter/rendering/CrossAxisAlignment-class.html)
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/baseline.png" width="320">
 

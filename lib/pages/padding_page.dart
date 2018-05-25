@@ -3,27 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/appbar_builder.dart';
 
-class VerticalPadding extends StatelessWidget {
-  VerticalPadding({
-    @required this.child,
-    this.padding = 16.0,
-    this.color = Colors.white,
-  });
-
-  final double padding;
-  final Widget child;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      padding: EdgeInsets.symmetric(vertical: padding),
-      child: child,
-    );
-  }
-}
-
 class PaddingPage extends StatelessWidget {
   Widget _buildText(
       {String text, Color color, Color textColor = Colors.white}) {
@@ -45,7 +24,6 @@ class PaddingPage extends StatelessWidget {
       appBar: AppBarBuilder.build(
         layoutType: LayoutType.padding,
       ),
-      //drawer: Drawer(child: LayoutSelectionPage(onSelected: onLayoutSelected)),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -86,6 +64,27 @@ class PaddingPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class VerticalPadding extends StatelessWidget {
+  VerticalPadding({
+    @required this.child,
+    this.padding = 16.0,
+    this.color = Colors.white,
+  });
+
+  final double padding;
+  final Widget child;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      padding: EdgeInsets.symmetric(vertical: padding),
+      child: child,
     );
   }
 }

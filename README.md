@@ -58,6 +58,11 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/padding.png" width="320">
 
+## Not (yet) included
+
+- [Scrolling widgets](https://flutter.io/widgets/scrolling/), including [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html), [GridView](https://docs.flutter.io/flutter/widgets/GridView-class.html), [PageView](https://docs.flutter.io/flutter/widgets/PageView-class.html).
+
+
 ### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
 
 ### [License: MIT](LICENSE.md)

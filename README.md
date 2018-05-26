@@ -67,3 +67,8 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 ### [License: MIT](LICENSE.md)
 
+### Attribution
+
+Youtube Play Icon by [Youtube Clipart](http://clipartmag.com/youtube-clipart).
+
+

@@ -1,6 +1,6 @@
 ## Super Useful Flutter Layouts - Right in Your Pocket. 😉
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RJEnTRBxaSg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Flutter Layouts Walkthrough: Row, Column, Stack, Expanded, Padding](https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/video-poster.png)](https://www.youtube.com/watch?v=RJEnTRBxaSg)
 
 This app shows you how to use the most common layouts in Flutter.
 

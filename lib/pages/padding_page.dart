@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
-class PaddingPage extends StatelessWidget {
+class PaddingPage extends StatelessWidget implements HasLayoutGroup {
+  PaddingPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  final LayoutGroup layoutGroup;
+  final VoidCallback onLayoutToggle;
+
   Widget _buildText(
       {String text, Color color, Color textColor = Colors.white}) {
     return Container(
@@ -21,8 +25,10 @@ class PaddingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarBuilder.build(
+      appBar: MainAppBar(
+        layoutGroup: layoutGroup,
         layoutType: LayoutType.padding,
+        onLayoutToggle: onLayoutToggle,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

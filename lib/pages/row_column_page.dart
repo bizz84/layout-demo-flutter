@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/row_column_layout_attributes.dart';
 
-class RowColumnPage extends StatefulWidget {
-  RowColumnPage({Key key}) : super(key: key);
+class RowColumnPage extends StatefulWidget implements HasLayoutGroup {
+  RowColumnPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  final LayoutGroup layoutGroup;
+  final VoidCallback onLayoutToggle;
 
   @override
   _RowColumnPageState createState() => new _RowColumnPageState();
@@ -103,12 +105,14 @@ class _RowColumnPageState extends State<RowColumnPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarBuilder.build(
+      appBar: MainAppBar(
+        layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.rowColumn,
         bottom: PreferredSize(
           preferredSize: Size(0.0, 160.0),
           child: _buildLayoutAttributesPage(),
         ),
+        onLayoutToggle: widget.onLayoutToggle,
       ),
       body: Container(color: Colors.yellow, child: buildContent()),
     );

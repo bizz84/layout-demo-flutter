@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/baseline_layout_attributes.dart';
 
-class BaselinePage extends StatefulWidget {
-  BaselinePage({Key key}) : super(key: key);
+class BaselinePage extends StatefulWidget implements HasLayoutGroup {
+  BaselinePage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  final LayoutGroup layoutGroup;
+  final VoidCallback onLayoutToggle;
 
   @override
   State<StatefulWidget> createState() => BaselinePageState();
@@ -38,12 +40,14 @@ class BaselinePageState extends State<BaselinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarBuilder.build(
+      appBar: MainAppBar(
+        layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.baseline,
         bottom: PreferredSize(
           preferredSize: Size(0.0, 80.0),
           child: _buildLayoutAttributesPage(),
         ),
+        onLayoutToggle: widget.onLayoutToggle,
       ),
       body: Container(
         padding: EdgeInsets.all(15.0),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/stack_layout_attributes.dart';
 
-class StackPage extends StatefulWidget {
-  StackPage({Key key}) : super(key: key);
+class StackPage extends StatefulWidget implements HasLayoutGroup {
+  StackPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  final LayoutGroup layoutGroup;
+  final VoidCallback onLayoutToggle;
 
   @override
   _StackPageState createState() => new _StackPageState();
@@ -134,12 +136,14 @@ class _StackPageState extends State<StackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarBuilder.build(
+      appBar: MainAppBar(
+        layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.stack,
         bottom: PreferredSize(
           preferredSize: Size(0.0, 80.0),
           child: _buildLayoutAttributesPage(),
         ),
+        onLayoutToggle: widget.onLayoutToggle,
       ),
       body: Center(
         child: _buildStack(),

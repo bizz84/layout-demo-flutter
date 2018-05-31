@@ -14,7 +14,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  LayoutGroup _layoutGroup = LayoutGroup.nonScrollable;
   LayoutType _layoutSelection = LayoutType.rowColumn;
+
+  void _onLayoutGroupToggle() {
+    setState(() {
+      _layoutGroup = _layoutGroup == LayoutGroup.nonScrollable ? LayoutGroup.scrollable : LayoutGroup.nonScrollable;
+    });
+  }
 
   void _onLayoutSelected(LayoutType selection) {
     setState(() {
@@ -66,15 +73,15 @@ class _MainPageState extends State<MainPage> {
   Widget _buildBody() {
     switch (_layoutSelection) {
       case LayoutType.rowColumn:
-        return RowColumnPage();
+        return RowColumnPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.baseline:
-        return BaselinePage();
+        return BaselinePage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.stack:
-        return StackPage();
+        return StackPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.expanded:
-        return ExpandedPage();
+        return ExpandedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.padding:
-        return PaddingPage();
+        return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
     }
     return null;
   }

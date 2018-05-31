@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/pages/appbar_builder.dart';
+import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
-class ExpandedPage extends StatelessWidget {
-  ExpandedPage({Key key}) : super(key: key);
+class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
+  ExpandedPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  final LayoutGroup layoutGroup;
+  final VoidCallback onLayoutToggle;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarBuilder.build(
+      appBar: MainAppBar(
+        layoutGroup: layoutGroup,
         layoutType: LayoutType.expanded,
+        onLayoutToggle: onLayoutToggle,
       ),
       body: Container(
         child: _buildContent(),

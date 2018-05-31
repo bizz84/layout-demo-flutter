@@ -10,7 +10,7 @@ class MainAppBar extends AppBar {
     VoidCallback onLayoutToggle,
   }) : super(
           leading: IconButton(
-            icon: Icon(layoutGroup == LayoutGroup.nonScrollable ? Icons.grid_on : Icons.home),
+            icon: Icon(layoutGroup == LayoutGroup.nonScrollable ? Icons.filter_1 : Icons.filter_2),
             onPressed: onLayoutToggle,
           ),
           title: Text(layoutName(layoutType)),

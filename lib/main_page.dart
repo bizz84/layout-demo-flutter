@@ -15,7 +15,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   LayoutGroup _layoutGroup = LayoutGroup.nonScrollable;
-  LayoutType _layoutSelection = LayoutType.rowColumn;
+  LayoutType _layoutSelection1 = LayoutType.rowColumn;
+  LayoutType _layoutSelection2 = LayoutType.grid;
 
   void _onLayoutGroupToggle() {
     setState(() {
@@ -25,32 +26,51 @@ class _MainPageState extends State<MainPage> {
 
   void _onLayoutSelected(LayoutType selection) {
     setState(() {
-      _layoutSelection = selection;
+      if (_layoutGroup == LayoutGroup.nonScrollable) {
+        _layoutSelection1 = selection;
+      } else {
+        _layoutSelection2 = selection;
+      }
     });
   }
 
   void _onSelectTab(int index) {
-    switch (index) {
-      case 0:
-        _onLayoutSelected(LayoutType.rowColumn);
-        break;
-      case 1:
-        _onLayoutSelected(LayoutType.baseline);
-        break;
-      case 2:
-        _onLayoutSelected(LayoutType.stack);
-        break;
-      case 3:
-        _onLayoutSelected(LayoutType.expanded);
-        break;
-      case 4:
-        _onLayoutSelected(LayoutType.padding);
-        break;
+    if (_layoutGroup == LayoutGroup.nonScrollable) {
+      switch (index) {
+        case 0:
+          _onLayoutSelected(LayoutType.rowColumn);
+          break;
+        case 1:
+          _onLayoutSelected(LayoutType.baseline);
+          break;
+        case 2:
+          _onLayoutSelected(LayoutType.stack);
+          break;
+        case 3:
+          _onLayoutSelected(LayoutType.expanded);
+          break;
+        case 4:
+          _onLayoutSelected(LayoutType.padding);
+          break;
+      }
+    } else {
+      switch (index) {
+        case 0:
+          _onLayoutSelected(LayoutType.grid);
+          break;
+        case 1:
+          _onLayoutSelected(LayoutType.custom);
+          break;
+      }
     }
   }
 
   Color _colorTabMatching({LayoutType layoutSelection}) {
-    return _layoutSelection == layoutSelection ? Colors.orange : Colors.grey;
+    if (_layoutGroup == LayoutGroup.nonScrollable) {
+      return _layoutSelection1 == layoutSelection ? Colors.orange : Colors.grey;
+    } else {
+      return _layoutSelection2 == layoutSelection ? Colors.orange : Colors.grey;
+    }
   }
 
   BottomNavigationBarItem _buildItem(
@@ -71,7 +91,8 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildBody() {
-    switch (_layoutSelection) {
+    LayoutType layoutSelection = _layoutGroup == LayoutGroup.nonScrollable ? _layoutSelection1 : _layoutSelection2;
+    switch (layoutSelection) {
       case LayoutType.rowColumn:
         return RowColumnPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.baseline:
@@ -82,27 +103,51 @@ class _MainPageState extends State<MainPage> {
         return ExpandedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.padding:
         return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
+      case LayoutType.grid:
+        return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
+      case LayoutType.custom:
+        return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
     }
     return null;
+  }
+
+  Widget _buildBottomNavigationBar() {
+    if (_layoutGroup == LayoutGroup.nonScrollable) {
+      return BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          _buildItem(
+              icon: Icons.view_headline, layoutSelection: LayoutType.rowColumn),
+          _buildItem(
+              icon: Icons.format_size, layoutSelection: LayoutType.baseline),
+          _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
+          _buildItem(
+              icon: Icons.line_weight, layoutSelection: LayoutType.expanded),
+          _buildItem(
+              icon: Icons.format_line_spacing,
+              layoutSelection: LayoutType.padding),
+        ],
+        onTap: _onSelectTab,
+      );
+    } else {
+      return BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          _buildItem(
+              icon: Icons.view_headline, layoutSelection: LayoutType.grid),
+          _buildItem(
+              icon: Icons.view_headline, layoutSelection: LayoutType.custom),
+        ],
+        onTap: _onSelectTab,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildBody(),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-          _buildItem(icon: Icons.view_headline, layoutSelection: LayoutType.rowColumn),
-          _buildItem(icon: Icons.format_size, layoutSelection: LayoutType.baseline),
-          _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
-          _buildItem(
-              icon: Icons.line_weight, layoutSelection: LayoutType.expanded),
-          _buildItem(
-              icon: Icons.format_line_spacing, layoutSelection: LayoutType.padding),
-        ],
-        onTap: _onSelectTab,
-      ),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 }

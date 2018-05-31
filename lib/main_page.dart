@@ -4,6 +4,7 @@ import 'package:layout_demo_flutter/pages/expanded_page.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/padding_page.dart';
 import 'package:layout_demo_flutter/pages/row_column_page.dart';
+import 'package:layout_demo_flutter/pages/slivers_page.dart';
 import 'package:layout_demo_flutter/pages/stack_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -59,7 +60,7 @@ class _MainPageState extends State<MainPage> {
           _onLayoutSelected(LayoutType.grid);
           break;
         case 1:
-          _onLayoutSelected(LayoutType.custom);
+          _onLayoutSelected(LayoutType.slivers);
           break;
       }
     }
@@ -105,8 +106,8 @@ class _MainPageState extends State<MainPage> {
         return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.grid:
         return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.custom:
-        return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
+      case LayoutType.slivers:
+        return SliversPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
     }
     return null;
   }
@@ -134,9 +135,9 @@ class _MainPageState extends State<MainPage> {
         type: BottomNavigationBarType.fixed,
         items: [
           _buildItem(
-              icon: Icons.view_headline, layoutSelection: LayoutType.grid),
+              icon: Icons.view_module, layoutSelection: LayoutType.grid),
           _buildItem(
-              icon: Icons.view_headline, layoutSelection: LayoutType.custom),
+              icon: Icons.view_day, layoutSelection: LayoutType.slivers),
         ],
         onTap: _onSelectTab,
       );

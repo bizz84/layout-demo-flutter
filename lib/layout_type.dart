@@ -17,7 +17,7 @@ enum LayoutType {
   stack,
   expanded,
   padding,
-  grid,
+  list,
   slivers,
 }
 
@@ -33,8 +33,8 @@ String layoutName(LayoutType layoutType) {
       return 'Expanded';
     case LayoutType.padding:
       return 'Padding';
-    case LayoutType.grid:
-      return 'Grid';
+    case LayoutType.list:
+      return 'List';
     case LayoutType.slivers:
       return 'Custom';
     default:

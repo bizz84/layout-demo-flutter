@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/pages/baseline_page.dart';
 import 'package:layout_demo_flutter/pages/expanded_page.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
+import 'package:layout_demo_flutter/pages/list_page.dart';
 import 'package:layout_demo_flutter/pages/padding_page.dart';
 import 'package:layout_demo_flutter/pages/row_column_page.dart';
 import 'package:layout_demo_flutter/pages/slivers_page.dart';
@@ -17,7 +18,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   LayoutGroup _layoutGroup = LayoutGroup.nonScrollable;
   LayoutType _layoutSelection1 = LayoutType.rowColumn;
-  LayoutType _layoutSelection2 = LayoutType.grid;
+  LayoutType _layoutSelection2 = LayoutType.list;
 
   void _onLayoutGroupToggle() {
     setState(() {
@@ -57,7 +58,7 @@ class _MainPageState extends State<MainPage> {
     } else {
       switch (index) {
         case 0:
-          _onLayoutSelected(LayoutType.grid);
+          _onLayoutSelected(LayoutType.list);
           break;
         case 1:
           _onLayoutSelected(LayoutType.slivers);
@@ -104,8 +105,8 @@ class _MainPageState extends State<MainPage> {
         return ExpandedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.padding:
         return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.grid:
-        return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
+      case LayoutType.list:
+        return ListPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.slivers:
         return SliversPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
     }
@@ -135,7 +136,7 @@ class _MainPageState extends State<MainPage> {
         type: BottomNavigationBarType.fixed,
         items: [
           _buildItem(
-              icon: Icons.view_module, layoutSelection: LayoutType.grid),
+              icon: Icons.format_list_bulleted, layoutSelection: LayoutType.list),
           _buildItem(
               icon: Icons.view_day, layoutSelection: LayoutType.slivers),
         ],

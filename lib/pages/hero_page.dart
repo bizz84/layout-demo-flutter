@@ -79,6 +79,17 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
+  final List<String> assetNames = [
+    'assets/brady-bellini-212790-unsplash.jpg',
+    'assets/stefan-stefancik-105587-unsplash.jpg',
+    'assets/simon-fitall-530083-unsplash.jpg',
+    'assets/anton-repponen-99530-unsplash.jpg',
+    'assets/kevin-cochran-524957-unsplash.jpg',
+    'assets/samsommer-72299-unsplash.jpg',
+    'assets/simon-matzinger-320332-unsplash.jpg',
+    'assets/meng-ji-102492-unsplash.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,13 +111,26 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
               maxExtent: 250.0,
             ),
           ),
-          SliverList(
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200.0,
+              mainAxisSpacing: 0.0,
+              crossAxisSpacing: 0.0,
+              childAspectRatio: 0.75,
+            ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                Contact contact = allContacts[index];
-                return ContactListTile(contact);
+                return Container(
+                  alignment: Alignment.center,
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      assetNames[index % assetNames.length],
+                    ),
+                  ),
+                );
               },
-              childCount: allContacts.length,
+              childCount: 8,
             ),
           ),
         ],

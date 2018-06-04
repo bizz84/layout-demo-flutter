@@ -20,8 +20,25 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-  # attribution: https://unsplash.com/photos/EN2PucB2yhA
+  # https://unsplash.com/photos/EN2PucB2yhA
   - assets/ronnie-mayo-361348-unsplash.jpg
+  # https://unsplash.com/photos/pmH_Y4Qetrk
+  - assets/stefan-stefancik-105587-unsplash.jpg
+  # https://unsplash.com/photos/5ditmO9_ae0
+  - assets/simon-fitall-530083-unsplash.jpg
+  # https://unsplash.com/photos/3MNzGlQM7qs
+  - assets/anton-repponen-99530-unsplash.jpg
+  # https://unsplash.com/photos/CPjkWSD0RM0
+  - assets/kevin-cochran-524957-unsplash.jpg
+  # https://unsplash.com/photos/T0XLKgpyT_c
+  - assets/samsommer-72299-unsplash.jpg
+  # https://unsplash.com/photos/twukN12EN7c
+  - assets/simon-matzinger-320332-unsplash.jpg
+  # https://unsplash.com/photos/8BH_M-53CyA
+  - assets/meng-ji-102492-unsplash.jpg
+  # https://unsplash.com/photos/tvOvBq90bM0
+  - assets/brady-bellini-212790-unsplash.jpg
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

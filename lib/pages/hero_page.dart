@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
-import 'package:layout_demo_flutter/pages/list_page.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
 
@@ -122,11 +121,9 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
               (BuildContext context, int index) {
                 return Container(
                   alignment: Alignment.center,
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      assetNames[index % assetNames.length],
-                    ),
+                  padding: _edgeInsetsForIndex(index),
+                  child: Image.asset(
+                    assetNames[index % assetNames.length],
                   ),
                 );
               },
@@ -136,5 +133,13 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
         ],
       ),
     );
+  }
+
+  EdgeInsets _edgeInsetsForIndex(int index) {
+    if (index % 2 == 0) {
+      return EdgeInsets.only(top: 4.0, left: 8.0, right: 4.0, bottom: 4.0);
+    } else {
+      return EdgeInsets.only(top: 4.0, left: 4.0, right: 8.0, bottom: 4.0);
+    }
   }
 }

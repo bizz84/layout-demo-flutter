@@ -5,6 +5,7 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/hero_page.dart';
 import 'package:layout_demo_flutter/pages/list_page.dart';
 import 'package:layout_demo_flutter/pages/padding_page.dart';
+import 'package:layout_demo_flutter/pages/page_view_page.dart';
 import 'package:layout_demo_flutter/pages/row_column_page.dart';
 import 'package:layout_demo_flutter/pages/slivers_page.dart';
 import 'package:layout_demo_flutter/pages/stack_page.dart';
@@ -59,12 +60,15 @@ class _MainPageState extends State<MainPage> {
     } else {
       switch (index) {
         case 0:
-          _onLayoutSelected(LayoutType.list);
+          _onLayoutSelected(LayoutType.pageView);
           break;
         case 1:
-          _onLayoutSelected(LayoutType.slivers);
+          _onLayoutSelected(LayoutType.list);
           break;
         case 2:
+          _onLayoutSelected(LayoutType.slivers);
+          break;
+        case 3:
           _onLayoutSelected(LayoutType.hero);
           break;
       }
@@ -109,6 +113,8 @@ class _MainPageState extends State<MainPage> {
         return ExpandedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.padding:
         return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
+      case LayoutType.pageView:
+        return PageViewPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.list:
         return ListPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.slivers:
@@ -141,6 +147,8 @@ class _MainPageState extends State<MainPage> {
       return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: [
+          _buildItem(
+              icon: Icons.view_week, layoutSelection: LayoutType.pageView),
           _buildItem(
               icon: Icons.format_list_bulleted, layoutSelection: LayoutType.list),
           _buildItem(

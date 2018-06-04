@@ -19,6 +19,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+  # attribution: https://unsplash.com/photos/EN2PucB2yhA
+  - assets/ronnie-mayo-361348-unsplash.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

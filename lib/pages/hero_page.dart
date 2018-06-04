@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/list_page.dart';
-import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
 
 class HeroHeader implements SliverPersistentHeaderDelegate {
-  HeroHeader({this.minExtent, this.maxExtent});
+  HeroHeader({this.layoutGroup, this.onLayoutToggle, this.minExtent, this.maxExtent});
+  final LayoutGroup layoutGroup;
+  final VoidCallback onLayoutToggle;
   double maxExtent;
   double minExtent;
 
@@ -25,9 +26,21 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
                 Colors.lightGreen,
               ],
               stops: [0.0, 0.5, 1.0],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               tileMode: TileMode.repeated,
+            ),
+          ),
+        ),
+        Positioned(
+          left: 4.0,
+          top: 4.0,
+          child: SafeArea(
+            child: IconButton(
+              icon: Icon(layoutGroup == LayoutGroup.nonScrollable
+                  ? Icons.filter_1
+                  : Icons.filter_2),
+              onPressed: onLayoutToggle,
             ),
           ),
         ),
@@ -70,11 +83,13 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
           SliverPersistentHeader(
             pinned: true,
             delegate: HeroHeader(
-              minExtent: 100.0,
+              layoutGroup: layoutGroup,
+              onLayoutToggle: onLayoutToggle,
+              minExtent: 150.0,
               maxExtent: 200.0,
             ),
           ),
-          new SliverList(
+          SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 Contact contact = allContacts[index];

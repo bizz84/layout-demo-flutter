@@ -31,8 +31,8 @@ List<Contact> allContacts = [
   Contact(name: 'Rhiannon Macfarlane', email: 'rhiannon.macfarlane@me.com'),
 ];
 
-class _ContactListTile extends ListTile {
-  _ContactListTile(Contact contact)
+class ContactListTile extends ListTile {
+  ContactListTile(Contact contact)
       : super(
           title: Text(contact.name),
           subtitle: Text(contact.email),
@@ -64,7 +64,7 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
         itemCount: allContacts.length,
         itemBuilder: (BuildContext content, int index) {
           Contact contact = allContacts[index];
-          return _ContactListTile(contact);
+          return ContactListTile(contact);
         });
   }
 }

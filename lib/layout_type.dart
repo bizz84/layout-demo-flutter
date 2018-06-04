@@ -19,6 +19,7 @@ enum LayoutType {
   padding,
   list,
   slivers,
+  hero,
 }
 
 String layoutName(LayoutType layoutType) {
@@ -36,7 +37,9 @@ String layoutName(LayoutType layoutType) {
     case LayoutType.list:
       return 'List';
     case LayoutType.slivers:
-      return 'Custom';
+      return 'Slivers';
+    case LayoutType.hero:
+      return 'Hero';
     default:
       return '';
   }

@@ -21,6 +21,7 @@ enum LayoutType {
   list,
   slivers,
   hero,
+  nested,
 }
 
 String layoutName(LayoutType layoutType) {
@@ -43,6 +44,8 @@ String layoutName(LayoutType layoutType) {
       return 'Slivers';
     case LayoutType.hero:
       return 'Hero';
+    case LayoutType.nested:
+      return 'Nested';
     default:
       return '';
   }

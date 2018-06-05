@@ -4,6 +4,7 @@ import 'package:layout_demo_flutter/pages/expanded_page.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/hero_page.dart';
 import 'package:layout_demo_flutter/pages/list_page.dart';
+import 'package:layout_demo_flutter/pages/nested_page.dart';
 import 'package:layout_demo_flutter/pages/padding_page.dart';
 import 'package:layout_demo_flutter/pages/page_view_page.dart';
 import 'package:layout_demo_flutter/pages/row_column_page.dart';
@@ -71,6 +72,9 @@ class _MainPageState extends State<MainPage> {
         case 3:
           _onLayoutSelected(LayoutType.hero);
           break;
+        case 4:
+          _onLayoutSelected(LayoutType.nested);
+          break;
       }
     }
   }
@@ -121,6 +125,8 @@ class _MainPageState extends State<MainPage> {
         return SliversPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
       case LayoutType.hero:
         return HeroPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
+      case LayoutType.nested:
+        return NestedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
     }
     return null;
   }
@@ -155,6 +161,8 @@ class _MainPageState extends State<MainPage> {
               icon: Icons.view_day, layoutSelection: LayoutType.slivers),
           _buildItem(
               icon: Icons.gradient, layoutSelection: LayoutType.hero),
+          _buildItem(
+              icon: Icons.dashboard, layoutSelection: LayoutType.nested),
         ],
         onTap: _onSelectTab,
       );

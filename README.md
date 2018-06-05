@@ -19,6 +19,11 @@ Oh, and the app itself is built with - guess what - a combination of Flutter lay
 - [Stack](#stack)
 - [Expanded](#expanded)
 - [Padding](#padding)
+- [PageView](#pageview)
+- [ListView](#listview)
+- [Slivers](#slivers)
+- [Hero](#hero)
+- [Nested](#nested)
 
 ## Row / Column
 
@@ -41,6 +46,7 @@ Oh, and the app itself is built with - guess what - a combination of Flutter lay
 
 - [Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
 - [AlignmentDirectional](https://docs.flutter.io/flutter/painting/AlignmentDirectional-class.html)
+- [Positioned](https://docs.flutter.io/flutter/widgets/Positioned-class.html)
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/stack.png" width="320">
 
@@ -60,9 +66,41 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/padding.png" width="320">
 
-## Not (yet) included
+## PageView
 
-- [Scrolling widgets](https://flutter.io/widgets/scrolling/), including [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html), [GridView](https://docs.flutter.io/flutter/widgets/GridView-class.html), [PageView](https://docs.flutter.io/flutter/widgets/PageView-class.html).
+- [PageView](https://docs.flutter.io/flutter/widgets/PageView-class.html)
+
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/page-view.png" width="320">
+
+## ListView
+
+- [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html)
+
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/list.png" width="320">
+
+## Slivers
+
+- [CustomScrollView](https://docs.flutter.io/flutter/widgets/CustomScrollView-class.html)
+- [SliverAppBar](https://docs.flutter.io/flutter/material/SliverAppBar-class.html)
+- [SliverGrid](https://docs.flutter.io/flutter/widgets/SliverGrid-class.html)
+- [SliverFixedExtentList](https://docs.flutter.io/flutter/widgets/SliverFixedExtentList-class.html)
+
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/slivers.png" width="320">
+
+## Hero
+
+- [Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
+- [Positioned](https://docs.flutter.io/flutter/widgets/Positioned-class.html)
+- [SliverPersistentHeader](https://docs.flutter.io/flutter/widgets/SliverPersistentHeader-class.html)
+- [SliverGrid](https://docs.flutter.io/flutter/widgets/SliverGrid-class.html)
+
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/hero.jpg" width="320">
+
+## Nested
+
+- [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html)
+
+<img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/nested.png" width="320">
 
 
 ### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).

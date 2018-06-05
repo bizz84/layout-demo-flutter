@@ -21,7 +21,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   LayoutGroup _layoutGroup = LayoutGroup.nonScrollable;
   LayoutType _layoutSelection1 = LayoutType.rowColumn;
-  LayoutType _layoutSelection2 = LayoutType.list;
+  LayoutType _layoutSelection2 = LayoutType.pageView;
 
   void _onLayoutGroupToggle() {
     setState(() {

@@ -127,7 +127,7 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
                   ),
                 );
               },
-              childCount: 8,
+              childCount: assetNames.length * 2,
             ),
           ),
         ],

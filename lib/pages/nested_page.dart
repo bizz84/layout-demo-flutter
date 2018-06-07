@@ -63,10 +63,11 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
         width: itemSize,
         height: itemSize,
         child: Container(
+          alignment: AlignmentDirectional.center,
           color: color,
-          child: Center(
-            child: Text('$index',
-                style: TextStyle(fontSize: 72.0, color: Colors.white)),
+          child: Text(
+            '$index',
+            style: TextStyle(fontSize: 72.0, color: Colors.white),
           ),
         ),
       ),

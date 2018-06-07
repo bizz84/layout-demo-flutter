@@ -4,7 +4,9 @@ YouTube video walkthroughs with explanations here (part 1 and 2):
 
 [![Flutter Layouts: Row, Column, Stack, Expanded, Padding](screenshots/video-poster.png)](https://www.youtube.com/watch?v=RJEnTRBxaSg)
 
+<!--
 [![Flutter Layouts: PageView, ListView, GridView, Slivers, Hero Imaegs](screenshots/video-poster2.jpg)]()
+-->
 
 This app shows you how to use the most common layouts in Flutter.
 
@@ -77,6 +79,7 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 ## ListView
 
 - [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html)
+- [ListTile](https://docs.flutter.io/flutter/material/ListTile-class.html)
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/list.png" width="320">
 
@@ -89,7 +92,7 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/slivers.png" width="320">
 
-## Hero
+## Hero Image
 
 - [Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
 - [Positioned](https://docs.flutter.io/flutter/widgets/Positioned-class.html)
@@ -98,7 +101,7 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/hero.jpg" width="320">
 
-## Nested
+## Nested Lists
 
 - [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html)
 

@@ -8,22 +8,19 @@ class PageViewPage extends StatelessWidget implements HasLayoutGroup {
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
-  final PageController pageController = new PageController();
-  int pageIndex = 0;
-  int userScrollPageIndex = 0;
-
   Widget _buildPage({int index, Color color}) {
     return Container(
+      alignment: AlignmentDirectional.center,
       color: color,
-      child: Center(
-        child: Text('$index', style: TextStyle(fontSize: 132.0, color: Colors.white)),
+      child: Text(
+        '$index',
+        style: TextStyle(fontSize: 132.0, color: Colors.white),
       ),
     );
   }
 
   Widget _buildPageView() {
     return PageView(
-      controller: pageController,
       children: [
         _buildPage(index: 1, color: Colors.green),
         _buildPage(index: 2, color: Colors.blue),
@@ -32,6 +29,7 @@ class PageViewPage extends StatelessWidget implements HasLayoutGroup {
       ],
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

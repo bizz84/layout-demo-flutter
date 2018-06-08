@@ -94,6 +94,7 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 
 - [Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
 - [Positioned](https://docs.flutter.io/flutter/widgets/Positioned-class.html)
+- [SafeArea](https://docs.flutter.io/flutter/widgets/SafeArea-class.html)
 - [SliverPersistentHeader](https://docs.flutter.io/flutter/widgets/SliverPersistentHeader-class.html)
 - [SliverGrid](https://docs.flutter.io/flutter/widgets/SliverGrid-class.html)
 

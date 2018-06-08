@@ -26,8 +26,8 @@ Oh, and the app itself is built with - guess what - a combination of Flutter lay
 - [PageView](#pageview)
 - [ListView](#listview)
 - [Slivers](#slivers)
-- [Hero](#hero)
-- [Nested](#nested)
+- [Hero Image](#hero-image)
+- [Nested Lists](#nested-lists)
 
 ## Row / Column
 

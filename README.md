@@ -4,7 +4,7 @@ YouTube video walkthroughs with explanations here:
 
 [![Flutter Layouts: Row, Column, Stack, Expanded, Padding](screenshots/video-poster.png)](https://www.youtube.com/watch?v=RJEnTRBxaSg)
 
-[![Flutter Layouts: PageView, ListView, GridView, Slivers, Hero Imaegs](screenshots/video-poster2.jpg)]()
+[![Flutter Layouts: PageView, ListView, GridView, Slivers, Hero Imaegs](screenshots/video-poster2.jpg)](https://www.youtube.com/watch?v=-zJ6CnOVndE)
 
 This app shows you how to use the most common layouts in Flutter.
 

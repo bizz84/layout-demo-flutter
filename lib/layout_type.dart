@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 
 enum LayoutGroup {
@@ -24,29 +23,15 @@ enum LayoutType {
   nested,
 }
 
-String layoutName(LayoutType layoutType) {
-  switch (layoutType) {
-    case LayoutType.rowColumn:
-      return 'Row / Col';
-    case LayoutType.baseline:
-      return 'Baseline';
-    case LayoutType.stack:
-      return 'Stack';
-    case LayoutType.expanded:
-      return 'Expanded';
-    case LayoutType.padding:
-      return 'Padding';
-    case LayoutType.pageView:
-      return 'Page View';
-    case LayoutType.list:
-      return 'List';
-    case LayoutType.slivers:
-      return 'Slivers';
-    case LayoutType.hero:
-      return 'Hero';
-    case LayoutType.nested:
-      return 'Nested';
-    default:
-      return '';
-  }
-}
+Map<LayoutType, String> layoutNames = {
+  LayoutType.rowColumn: 'Row / Col',
+  LayoutType.baseline: 'Baseline',
+  LayoutType.stack: 'Stack',
+  LayoutType.expanded: 'Expanded',
+  LayoutType.padding: 'Padding',
+  LayoutType.pageView: 'Page View',
+  LayoutType.list: 'List',
+  LayoutType.slivers: 'Slivers',
+  LayoutType.hero: 'Hero',
+  LayoutType.nested: 'Nested',
+};

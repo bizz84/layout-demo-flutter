@@ -15,17 +15,22 @@ class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
 
   @override
-  _MainPageState createState() => new _MainPageState();
+  _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
   LayoutGroup _layoutGroup = LayoutGroup.nonScrollable;
   LayoutType _layoutSelection1 = LayoutType.rowColumn;
   LayoutType _layoutSelection2 = LayoutType.pageView;
+  LayoutType get _layoutSelection => _layoutGroup == LayoutGroup.nonScrollable
+      ? _layoutSelection1
+      : _layoutSelection2;
 
   void _onLayoutGroupToggle() {
     setState(() {
-      _layoutGroup = _layoutGroup == LayoutGroup.nonScrollable ? LayoutGroup.scrollable : LayoutGroup.nonScrollable;
+      _layoutGroup = _layoutGroup == LayoutGroup.nonScrollable
+          ? LayoutGroup.scrollable
+          : LayoutGroup.nonScrollable;
     });
   }
 
@@ -41,41 +46,9 @@ class _MainPageState extends State<MainPage> {
 
   void _onSelectTab(int index) {
     if (_layoutGroup == LayoutGroup.nonScrollable) {
-      switch (index) {
-        case 0:
-          _onLayoutSelected(LayoutType.rowColumn);
-          break;
-        case 1:
-          _onLayoutSelected(LayoutType.baseline);
-          break;
-        case 2:
-          _onLayoutSelected(LayoutType.stack);
-          break;
-        case 3:
-          _onLayoutSelected(LayoutType.expanded);
-          break;
-        case 4:
-          _onLayoutSelected(LayoutType.padding);
-          break;
-      }
+      _onLayoutSelected(LayoutType.values[index]);
     } else {
-      switch (index) {
-        case 0:
-          _onLayoutSelected(LayoutType.pageView);
-          break;
-        case 1:
-          _onLayoutSelected(LayoutType.list);
-          break;
-        case 2:
-          _onLayoutSelected(LayoutType.slivers);
-          break;
-        case 3:
-          _onLayoutSelected(LayoutType.hero);
-          break;
-        case 4:
-          _onLayoutSelected(LayoutType.nested);
-          break;
-      }
+      _onLayoutSelected(LayoutType.values[index + 5]);
     }
   }
 
@@ -89,7 +62,7 @@ class _MainPageState extends State<MainPage> {
 
   BottomNavigationBarItem _buildItem(
       {IconData icon, LayoutType layoutSelection}) {
-    String text = layoutName(layoutSelection);
+    String text = layoutNames[layoutSelection];
     return BottomNavigationBarItem(
       icon: Icon(
         icon,
@@ -105,30 +78,28 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildBody() {
-    LayoutType layoutSelection = _layoutGroup == LayoutGroup.nonScrollable ? _layoutSelection1 : _layoutSelection2;
-    switch (layoutSelection) {
-      case LayoutType.rowColumn:
-        return RowColumnPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.baseline:
-        return BaselinePage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.stack:
-        return StackPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.expanded:
-        return ExpandedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.padding:
-        return PaddingPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.pageView:
-        return PageViewPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.list:
-        return ListPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.slivers:
-        return SliversPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.hero:
-        return HeroPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-      case LayoutType.nested:
-        return NestedPage(layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle);
-    }
-    return null;
+    return <LayoutType, WidgetBuilder>{
+      LayoutType.rowColumn: (_) => RowColumnPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.baseline: (_) => BaselinePage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.stack: (_) => StackPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.expanded: (_) => ExpandedPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.padding: (_) => PaddingPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.pageView: (_) => PageViewPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.list: (_) => ListPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.slivers: (_) => SliversPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.hero: (_) => HeroPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      LayoutType.nested: (_) => NestedPage(
+          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+    }[_layoutSelection](context);
   }
 
   Widget _buildBottomNavigationBar() {
@@ -156,13 +127,11 @@ class _MainPageState extends State<MainPage> {
           _buildItem(
               icon: Icons.view_week, layoutSelection: LayoutType.pageView),
           _buildItem(
-              icon: Icons.format_list_bulleted, layoutSelection: LayoutType.list),
-          _buildItem(
-              icon: Icons.view_day, layoutSelection: LayoutType.slivers),
-          _buildItem(
-              icon: Icons.gradient, layoutSelection: LayoutType.hero),
-          _buildItem(
-              icon: Icons.dashboard, layoutSelection: LayoutType.nested),
+              icon: Icons.format_list_bulleted,
+              layoutSelection: LayoutType.list),
+          _buildItem(icon: Icons.view_day, layoutSelection: LayoutType.slivers),
+          _buildItem(icon: Icons.gradient, layoutSelection: LayoutType.hero),
+          _buildItem(icon: Icons.dashboard, layoutSelection: LayoutType.nested),
         ],
         onTap: _onSelectTab,
       );

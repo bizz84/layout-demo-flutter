@@ -3,7 +3,7 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
 
-class HeroHeader implements SliverPersistentHeaderDelegate {
+class HeroHeader extends SliverPersistentHeaderDelegate {
   HeroHeader({
     this.layoutGroup,
     this.onLayoutToggle,

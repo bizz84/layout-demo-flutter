@@ -29,7 +29,7 @@ Oh, and the app itself is built with - guess what - a combination of Flutter lay
   - [Slivers](#slivers)
   - [Hero Image](#hero-image)
   - [Nested Lists](#nested-lists)
-    - [For more articles and video tutorials, check out Coding With Flutter.](#for-more-articles-and-video-tutorials-check-out-coding-with-flutter-1)
+    - [For more articles and video tutorials, check out Code With Andrea.](#for-more-articles-and-video-tutorials-check-out-code-with-andrea)
     - [License: MIT](#license-mit)
     - [Attribution](#attribution)
 
@@ -113,7 +113,7 @@ Wikipedia: [Golden Spiral](https://en.wikipedia.org/wiki/Golden_spiral) (also: F
 <img src="https://github.com/bizz84/layout-demo-flutter/raw/master/screenshots/nested.png" width="320">
 
 
-### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
+### For more articles and video tutorials, check out [Code With Andrea](https://codewithandrea.com/).
 
 ### [License: MIT](LICENSE.md)
 

@@ -24,7 +24,7 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
 
   Widget _buildContent() {
     return ListView.builder(
-        itemCount: 8,
+        itemCount: 16,
         itemBuilder: (BuildContext content, int index) {
           return _buildHorizontalList(parentIndex: index);
         });
@@ -43,7 +43,7 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
       height: height,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 5,
+          itemCount: 10,
           itemBuilder: (BuildContext content, int index) {
             return _buildItem(
               index: index + 1,

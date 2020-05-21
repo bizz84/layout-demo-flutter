@@ -1,5 +1,7 @@
 ## Super Useful Flutter Layouts - Right in Your Pocket. 😉
 
+**Update**: Flutter web app preview here: [https://flutter-layouts-demo.web.app/](https://flutter-layouts-demo.web.app/)
+
 YouTube video walkthroughs with explanations here: 
 
 [![Flutter Layouts: Row, Column, Stack, Expanded, Padding](screenshots/video-poster.png)](https://www.youtube.com/watch?v=RJEnTRBxaSg)
@@ -16,16 +18,20 @@ Oh, and the app itself is built with - guess what - a combination of Flutter lay
 
 # Table of Contents
 
-- [Row / Column](#row--column)
-- [Baseline](#baseline)
-- [Stack](#stack)
-- [Expanded](#expanded)
-- [Padding](#padding)
-- [PageView](#pageview)
-- [ListView](#listview)
-- [Slivers](#slivers)
-- [Hero Image](#hero-image)
-- [Nested Lists](#nested-lists)
+- [Table of Contents](#table-of-contents)
+  - [Row / Column](#row--column)
+  - [Baseline](#baseline)
+  - [Stack](#stack)
+  - [Expanded](#expanded)
+  - [Padding](#padding)
+  - [PageView](#pageview)
+  - [ListView](#listview)
+  - [Slivers](#slivers)
+  - [Hero Image](#hero-image)
+  - [Nested Lists](#nested-lists)
+    - [For more articles and video tutorials, check out Coding With Flutter.](#for-more-articles-and-video-tutorials-check-out-coding-with-flutter-1)
+    - [License: MIT](#license-mit)
+    - [Attribution](#attribution)
 
 ## Row / Column
 

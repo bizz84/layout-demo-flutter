@@ -87,6 +87,9 @@ unlinked_spec.ds
 # web
 web/firebase-config.js
 
+# Firebase
+public/
+
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3

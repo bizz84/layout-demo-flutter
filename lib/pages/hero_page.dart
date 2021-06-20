@@ -75,6 +75,13 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
   @override
   OverScrollHeaderStretchConfiguration get stretchConfiguration =>
       OverScrollHeaderStretchConfiguration();
+
+  @override
+  PersistentHeaderShowOnScreenConfiguration get showOnScreenConfiguration =>
+      null;
+
+  @override
+  TickerProvider get vsync => null;
 }
 
 class HeroPage extends StatelessWidget implements HasLayoutGroup {

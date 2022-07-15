@@ -63,17 +63,13 @@ class _MainPageState extends State<MainPage> {
   BottomNavigationBarItem _buildItem(
       {IconData icon, LayoutType layoutSelection}) {
     String text = layoutNames[layoutSelection];
+    // ignore: dead_code
     return BottomNavigationBarItem(
       icon: Icon(
         icon,
         color: _colorTabMatching(layoutSelection: layoutSelection),
       ),
-      title: Text(
-        text,
-        style: TextStyle(
-          color: _colorTabMatching(layoutSelection: layoutSelection),
-        ),
-      ),
+      label: text,
     );
   }
 

@@ -12,7 +12,7 @@ import 'package:layout_demo_flutter/pages/slivers_page.dart';
 import 'package:layout_demo_flutter/pages/stack_page.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key}) : super(key: key);
+  MainPage({Key? key}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -52,7 +52,7 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  Color _colorTabMatching({LayoutType layoutSelection}) {
+  Color _colorTabMatching({required LayoutType layoutSelection}) {
     if (_layoutGroup == LayoutGroup.nonScrollable) {
       return _layoutSelection1 == layoutSelection ? Colors.orange : Colors.grey;
     } else {
@@ -60,24 +60,21 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  BottomNavigationBarItem _buildItem(
-      {IconData icon, LayoutType layoutSelection}) {
-    String text = layoutNames[layoutSelection];
+  BottomNavigationBarItem _buildItem({
+    required IconData icon,
+    required LayoutType layoutSelection,
+  }) {
+    String text = layoutNames[layoutSelection] ?? '';
     return BottomNavigationBarItem(
       icon: Icon(
         icon,
         color: _colorTabMatching(layoutSelection: layoutSelection),
       ),
-      title: Text(
-        text,
-        style: TextStyle(
-          color: _colorTabMatching(layoutSelection: layoutSelection),
-        ),
-      ),
+      label: text,
     );
   }
 
-  Widget _buildBody() {
+  Widget? _buildBody() {
     return <LayoutType, WidgetBuilder>{
       LayoutType.rowColumn: (_) => RowColumnPage(
           layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
@@ -99,7 +96,8 @@ class _MainPageState extends State<MainPage> {
           layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
       LayoutType.nested: (_) => NestedPage(
           layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-    }[_layoutSelection](context);
+    }[_layoutSelection]
+        ?.call(context);
   }
 
   Widget _buildBottomNavigationBar() {

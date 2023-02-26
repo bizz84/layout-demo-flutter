@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attribute_selector.dart';
 
 class StackLayoutAttributes extends StatefulWidget {
-  StackLayoutAttributes({this.onUpdateType, this.onUpdateAlignment});
+  StackLayoutAttributes({
+    required this.onUpdateType,
+    required this.onUpdateAlignment,
+  });
 
   final ValueChanged<int> onUpdateType;
   final ValueChanged<int> onUpdateAlignment;
@@ -10,8 +13,8 @@ class StackLayoutAttributes extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StackLayoutAttributesState();
 }
-class StackLayoutAttributesState extends State<StackLayoutAttributes> {
 
+class StackLayoutAttributesState extends State<StackLayoutAttributes> {
   bool _alignmentDisabled = false;
 
   void _updateType(int index) {

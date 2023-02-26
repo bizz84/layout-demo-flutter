@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class PaddingPage extends StatelessWidget implements HasLayoutGroup {
-  PaddingPage({Key key, this.layoutGroup, this.onLayoutToggle})
-      : super(key: key);
+  PaddingPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
-  Widget _buildText(
-      {String text, Color color, Color textColor = Colors.white}) {
+  Widget _buildText({
+    required String text,
+    required Color color,
+    Color textColor = Colors.white,
+  }) {
     return Container(
       alignment: AlignmentDirectional.center,
       color: color,
@@ -34,11 +40,11 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           VerticalPadding(
-            color: Colors.green[100],
+            color: Colors.green[100] ?? Colors.green,
             child: _buildText(text: 'First', color: Colors.green),
           ),
           VerticalPadding(
-            color: Colors.red[100],
+            color: Colors.red[100] ?? Colors.red,
             child: _buildText(text: 'Second', color: Colors.red),
           ),
           SizedBox(
@@ -47,7 +53,7 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
                 text: '50 pt', color: Colors.white, textColor: Colors.black),
           ),
           VerticalPadding(
-            color: Colors.blue[100],
+            color: Colors.blue[100] ?? Colors.blue,
             child: _buildText(text: 'Third', color: Colors.blue),
           ),
           Expanded(
@@ -56,7 +62,7 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
                 text: 'flex: 1', color: Colors.white, textColor: Colors.black),
           ),
           VerticalPadding(
-            color: Colors.purple[100],
+            color: Colors.purple[100] ?? Colors.purple,
             child: _buildText(text: 'Fourth', color: Colors.purple),
           ),
           Expanded(
@@ -65,7 +71,7 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
                 text: 'flex: 2', color: Colors.white, textColor: Colors.black),
           ),
           VerticalPadding(
-            color: Colors.brown[100],
+            color: Colors.brown[100] ?? Colors.brown,
             child: _buildText(text: 'Fifth', color: Colors.brown),
           ),
         ],
@@ -76,7 +82,7 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
 
 class VerticalPadding extends StatelessWidget {
   VerticalPadding({
-    @required this.child,
+    required this.child,
     this.padding = 16.0,
     this.color = Colors.white,
   });

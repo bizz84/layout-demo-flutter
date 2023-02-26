@@ -4,7 +4,12 @@ import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/stack_layout_attributes.dart';
 
 class StackPage extends StatefulWidget implements HasLayoutGroup {
-  StackPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  StackPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
@@ -13,7 +18,6 @@ class StackPage extends StatefulWidget implements HasLayoutGroup {
 }
 
 class _StackPageState extends State<StackPage> {
-
   bool _useAlignment = true;
   AlignmentDirectional _alignmentDirectional = AlignmentDirectional.topStart;
 

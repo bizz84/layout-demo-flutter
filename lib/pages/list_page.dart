@@ -3,13 +3,18 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class Contact {
-  Contact({this.name, this.email});
+  Contact({required this.name, required this.email});
   final String name;
   final String email;
 }
 
 class ListPage extends StatelessWidget implements HasLayoutGroup {
-  ListPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  ListPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 

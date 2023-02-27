@@ -4,7 +4,12 @@ import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/row_column_layout_attributes.dart';
 
 class RowColumnPage extends StatefulWidget implements HasLayoutGroup {
-  RowColumnPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  RowColumnPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 

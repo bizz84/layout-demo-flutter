@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attribute_selector.dart';
 
 class RowColumnLayoutAttributes extends StatelessWidget {
-  RowColumnLayoutAttributes(
-      {this.onUpdateLayout,
-      this.onUpdateMainAxisAlignment,
-      this.onUpdateCrossAxisAlignment,
-      this.onUpdateMainAxisSize});
+  RowColumnLayoutAttributes({
+    required this.onUpdateLayout,
+    required this.onUpdateMainAxisAlignment,
+    required this.onUpdateCrossAxisAlignment,
+    required this.onUpdateMainAxisSize,
+  });
 
   final ValueChanged<int> onUpdateLayout;
   final ValueChanged<int> onUpdateMainAxisAlignment;
@@ -62,4 +63,3 @@ class RowColumnLayoutAttributes extends StatelessWidget {
         ]);
   }
 }
-

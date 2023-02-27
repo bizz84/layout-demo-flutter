@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/foundation.dart';
 
 class HeroHeader implements SliverPersistentHeaderDelegate {
   HeroHeader({
-    this.layoutGroup,
-    this.onLayoutToggle,
-    this.minExtent,
-    this.maxExtent,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+    required this.minExtent,
+    required this.maxExtent,
   });
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
@@ -70,22 +69,27 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
   }
 
   @override
-  FloatingHeaderSnapConfiguration get snapConfiguration => null;
+  FloatingHeaderSnapConfiguration? get snapConfiguration => null;
 
   @override
   OverScrollHeaderStretchConfiguration get stretchConfiguration =>
       OverScrollHeaderStretchConfiguration();
 
   @override
-  PersistentHeaderShowOnScreenConfiguration get showOnScreenConfiguration =>
+  PersistentHeaderShowOnScreenConfiguration? get showOnScreenConfiguration =>
       null;
 
   @override
-  TickerProvider get vsync => null;
+  TickerProvider? get vsync => null;
 }
 
 class HeroPage extends StatelessWidget implements HasLayoutGroup {
-  HeroPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  HeroPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 

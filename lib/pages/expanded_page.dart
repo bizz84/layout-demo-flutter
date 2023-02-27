@@ -3,7 +3,12 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
-  ExpandedPage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  ExpandedPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
@@ -21,7 +26,11 @@ class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
     );
   }
 
-  Widget _buildBox({int points, Color color, Color textColor = Colors.white}) {
+  Widget _buildBox({
+    required int points,
+    required Color color,
+    Color textColor = Colors.white,
+  }) {
     return Expanded(
       flex: points,
       child: Container(
@@ -48,7 +57,7 @@ class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
     }
   }
 
-  Widget _centeredLayout({Widget child}) {
+  Widget _centeredLayout({Widget? child}) {
     return LayoutBuilder(builder: (content, constraints) {
       Size size = _goldenRatio(constraints);
       return Center(

@@ -3,12 +3,16 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class PageViewPage extends StatelessWidget implements HasLayoutGroup {
-  PageViewPage({Key key, this.layoutGroup, this.onLayoutToggle})
-      : super(key: key);
+  PageViewPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
-  Widget _buildPage({int index, Color color}) {
+  Widget _buildPage({required int index, required Color color}) {
     return Container(
       alignment: AlignmentDirectional.center,
       color: color,

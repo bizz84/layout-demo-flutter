@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class LayoutAttributeSelector extends StatefulWidget {
   LayoutAttributeSelector({
-    this.title,
-    this.values,
+    required this.title,
+    required this.values,
     this.disabled = false,
-    this.onChange,
+    required this.onChange,
   });
 
   final String title;

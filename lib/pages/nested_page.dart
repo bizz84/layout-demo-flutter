@@ -3,8 +3,12 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class NestedPage extends StatelessWidget implements HasLayoutGroup {
-  NestedPage({Key key, this.layoutGroup, this.onLayoutToggle})
-      : super(key: key);
+  NestedPage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 
@@ -30,7 +34,7 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
         });
   }
 
-  Widget _buildHorizontalList({int parentIndex}) {
+  Widget _buildHorizontalList({required int parentIndex}) {
     var colors = [
       Colors.green,
       Colors.blue,
@@ -54,7 +58,11 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
     );
   }
 
-  Widget _buildItem({int index, Color color, double parentSize}) {
+  Widget _buildItem({
+    required int index,
+    required Color color,
+    required double parentSize,
+  }) {
     double edgeSize = 8.0;
     double itemSize = parentSize - edgeSize * 2.0;
     return Container(

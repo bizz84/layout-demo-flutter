@@ -4,7 +4,12 @@ import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/baseline_layout_attributes.dart';
 
 class BaselinePage extends StatefulWidget implements HasLayoutGroup {
-  BaselinePage({Key key, this.layoutGroup, this.onLayoutToggle}) : super(key: key);
+  BaselinePage({
+    Key? key,
+    required this.layoutGroup,
+    required this.onLayoutToggle,
+  }) : super(key: key);
+
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
 

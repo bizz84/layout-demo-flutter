@@ -22,21 +22,14 @@ class BaselinePage extends StatefulWidget implements HasLayoutGroup {
 class BaselinePageState extends State<BaselinePage> {
   CrossAxisAlignment _crossAxisAlignment = CrossAxisAlignment.baseline;
 
-  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) {
-    switch (index) {
-      case 0:
-        return CrossAxisAlignment.baseline;
-      case 1:
-        return CrossAxisAlignment.start;
-      case 2:
-        return CrossAxisAlignment.end;
-      case 3:
-        return CrossAxisAlignment.center;
-      case 4:
-        return CrossAxisAlignment.stretch;
-    }
-    return CrossAxisAlignment.start;
-  }
+  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) => switch (index) {
+        0 => CrossAxisAlignment.baseline,
+        1 => CrossAxisAlignment.start,
+        2 => CrossAxisAlignment.end,
+        3 => CrossAxisAlignment.center,
+        4 => CrossAxisAlignment.stretch,
+        _ => CrossAxisAlignment.start,
+      };
 
   void _updateCrossAxisAlignment(int index) {
     setState(() {
@@ -52,24 +45,32 @@ class BaselinePageState extends State<BaselinePage> {
         layoutType: LayoutType.baseline,
         bottom: PreferredSize(
           preferredSize: const Size(0.0, 80.0),
-          child: _buildLayoutAttributesPage(),
+          child: BaselineLayoutAttributes(
+            onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
+          ),
         ),
         onLayoutToggle: widget.onLayoutToggle,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: _buildContent(),
+        child: BaselineContent(crossAxisAlignment: _crossAxisAlignment),
       ),
     );
   }
+}
 
-  Widget _buildContent() {
+class BaselineContent extends StatelessWidget {
+  const BaselineContent({super.key, required this.crossAxisAlignment});
+  final CrossAxisAlignment crossAxisAlignment;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         ColoredBox(
           color: Colors.yellow,
           child: Row(
-            crossAxisAlignment: _crossAxisAlignment,
+            crossAxisAlignment: crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
             children: const [
               Text(
@@ -98,7 +99,7 @@ class BaselinePageState extends State<BaselinePage> {
         ColoredBox(
           color: Colors.yellow,
           child: Row(
-            crossAxisAlignment: _crossAxisAlignment,
+            crossAxisAlignment: crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
             children: const [
               Text(
@@ -119,12 +120,6 @@ class BaselinePageState extends State<BaselinePage> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildLayoutAttributesPage() {
-    return BaselineLayoutAttributes(
-      onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
     );
   }
 }

@@ -6,33 +6,33 @@ class LayoutAttributeSelector extends StatefulWidget {
     required this.title,
     required this.values,
     this.disabled = false,
-    required this.onChange,
+    required this.onIndexChanged,
   });
 
   final String title;
   final List<String> values;
   final bool disabled;
-  final ValueChanged<int> onChange;
+  final ValueChanged<int> onIndexChanged;
 
   @override
   State<StatefulWidget> createState() => LayoutAttributeSelectorState();
 }
 
 class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
-  int valueIndex = 0;
+  var _valueIndex = 0;
 
-  void next() {
-    valueIndex = valueIndex + 1 < widget.values.length ? valueIndex + 1 : 0;
-    update();
+  void _next() {
+    _valueIndex = _valueIndex + 1 < widget.values.length ? _valueIndex + 1 : 0;
+    _update();
   }
 
-  void previous() {
-    valueIndex = valueIndex > 0 ? valueIndex - 1 : widget.values.length - 1;
-    update();
+  void _previous() {
+    _valueIndex = _valueIndex > 0 ? _valueIndex - 1 : widget.values.length - 1;
+    _update();
   }
 
-  void update() {
-    widget.onChange(valueIndex);
+  void _update() {
+    widget.onIndexChanged(_valueIndex);
     setState(() {});
   }
 
@@ -47,10 +47,10 @@ class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
           IconButton(
             padding: const EdgeInsets.all(4.0),
             icon: const Icon(Icons.arrow_back),
-            onPressed: widget.disabled ? null : previous,
+            onPressed: widget.disabled ? null : _previous,
           ),
           Text(
-            widget.values[valueIndex],
+            widget.values[_valueIndex],
             maxLines: 2,
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -61,7 +61,7 @@ class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
           IconButton(
             padding: const EdgeInsets.all(4.0),
             icon: const Icon(Icons.arrow_forward),
-            onPressed: widget.disabled ? null : next,
+            onPressed: widget.disabled ? null : _next,
           ),
         ],
       ),

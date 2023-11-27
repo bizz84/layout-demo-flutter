@@ -20,10 +20,29 @@ class RowColumnPage extends StatefulWidget implements HasLayoutGroup {
 }
 
 class _RowColumnPageState extends State<RowColumnPage> {
-  bool _isRow = true;
-  MainAxisAlignment _mainAxisAlignment = MainAxisAlignment.start;
-  CrossAxisAlignment _crossAxisAlignment = CrossAxisAlignment.start;
-  MainAxisSize _mainAxisSize = MainAxisSize.min;
+  var _isRow = true;
+  var _mainAxisAlignment = MainAxisAlignment.start;
+  var _crossAxisAlignment = CrossAxisAlignment.start;
+  var _mainAxisSize = MainAxisSize.min;
+
+  MainAxisAlignment _mainAxisAlignmentFromIndex(int index) => switch (index) {
+        0 => MainAxisAlignment.start,
+        1 => MainAxisAlignment.end,
+        2 => MainAxisAlignment.center,
+        3 => MainAxisAlignment.spaceBetween,
+        4 => MainAxisAlignment.spaceAround,
+        5 => MainAxisAlignment.spaceEvenly,
+        _ => MainAxisAlignment.start,
+      };
+
+  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) => switch (index) {
+        0 => CrossAxisAlignment.baseline,
+        1 => CrossAxisAlignment.start,
+        2 => CrossAxisAlignment.end,
+        3 => CrossAxisAlignment.center,
+        4 => CrossAxisAlignment.stretch,
+        _ => CrossAxisAlignment.start,
+      };
 
   void _updateLayout(int index) {
     setState(() {
@@ -31,44 +50,10 @@ class _RowColumnPageState extends State<RowColumnPage> {
     });
   }
 
-  MainAxisAlignment _mainAxisAlignmentFromIndex(int index) {
-    switch (index) {
-      case 0:
-        return MainAxisAlignment.start;
-      case 1:
-        return MainAxisAlignment.end;
-      case 2:
-        return MainAxisAlignment.center;
-      case 3:
-        return MainAxisAlignment.spaceBetween;
-      case 4:
-        return MainAxisAlignment.spaceAround;
-      case 5:
-        return MainAxisAlignment.spaceEvenly;
-    }
-    return MainAxisAlignment.start;
-  }
-
   void _updateMainAxisAlignment(int index) {
     setState(() {
       _mainAxisAlignment = _mainAxisAlignmentFromIndex(index);
     });
-  }
-
-  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) {
-    switch (index) {
-      case 0:
-        return CrossAxisAlignment.start;
-      case 1:
-        return CrossAxisAlignment.end;
-      case 2:
-        return CrossAxisAlignment.center;
-      case 3:
-        return CrossAxisAlignment.stretch;
-      case 4:
-        return CrossAxisAlignment.baseline;
-    }
-    return CrossAxisAlignment.start;
   }
 
   void _updateCrossAxisAlignment(int index) {
@@ -83,32 +68,6 @@ class _RowColumnPageState extends State<RowColumnPage> {
     });
   }
 
-  Widget buildContent() {
-    if (_isRow) {
-      return Row(
-        mainAxisAlignment: _mainAxisAlignment,
-        crossAxisAlignment: _crossAxisAlignment,
-        mainAxisSize: _mainAxisSize,
-        children: const [
-          Icon(Icons.stars, size: 50.0),
-          Icon(Icons.stars, size: 100.0),
-          Icon(Icons.stars, size: 50.0),
-        ],
-      );
-    } else {
-      return Column(
-        mainAxisAlignment: _mainAxisAlignment,
-        crossAxisAlignment: _crossAxisAlignment,
-        mainAxisSize: _mainAxisSize,
-        children: const [
-          Icon(Icons.stars, size: 50.0),
-          Icon(Icons.stars, size: 100.0),
-          Icon(Icons.stars, size: 50.0),
-        ],
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,20 +76,39 @@ class _RowColumnPageState extends State<RowColumnPage> {
         layoutType: LayoutType.rowColumn,
         bottom: PreferredSize(
           preferredSize: const Size(0.0, 160.0),
-          child: _buildLayoutAttributesPage(),
+          child: RowColumnLayoutAttributes(
+            onUpdateLayout: _updateLayout,
+            onUpdateMainAxisAlignment: _updateMainAxisAlignment,
+            onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
+            onUpdateMainAxisSize: _updateMainAxisSize,
+          ),
         ),
         onLayoutToggle: widget.onLayoutToggle,
       ),
-      body: ColoredBox(color: Colors.yellow, child: buildContent()),
-    );
-  }
-
-  Widget _buildLayoutAttributesPage() {
-    return RowColumnLayoutAttributes(
-      onUpdateLayout: _updateLayout,
-      onUpdateMainAxisAlignment: _updateMainAxisAlignment,
-      onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
-      onUpdateMainAxisSize: _updateMainAxisSize,
+      body: ColoredBox(
+        color: Colors.yellow,
+        child: _isRow
+            ? Row(
+                mainAxisAlignment: _mainAxisAlignment,
+                crossAxisAlignment: _crossAxisAlignment,
+                mainAxisSize: _mainAxisSize,
+                children: const [
+                  Icon(Icons.stars, size: 50.0),
+                  Icon(Icons.stars, size: 100.0),
+                  Icon(Icons.stars, size: 50.0),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: _mainAxisAlignment,
+                crossAxisAlignment: _crossAxisAlignment,
+                mainAxisSize: _mainAxisSize,
+                children: const [
+                  Icon(Icons.stars, size: 50.0),
+                  Icon(Icons.stars, size: 100.0),
+                  Icon(Icons.stars, size: 50.0),
+                ],
+              ),
+      ),
     );
   }
 }

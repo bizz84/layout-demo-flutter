@@ -28,17 +28,14 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.list,
         onLayoutToggle: onLayoutToggle,
       ),
-      body: _buildContent(),
-    );
-  }
-
-  Widget _buildContent() {
-    return ListView.builder(
+      body: ListView.builder(
         itemCount: allContacts.length,
         itemBuilder: (BuildContext content, int index) {
           Contact contact = allContacts[index];
           return ContactListTile(contact);
-        });
+        },
+      ),
+    );
   }
 }
 

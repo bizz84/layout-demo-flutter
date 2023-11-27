@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attribute_selector.dart';
 
 class BaselineLayoutAttributes extends StatefulWidget {
-  const BaselineLayoutAttributes({super.key, required this.onUpdateCrossAxisAlignment});
+  const BaselineLayoutAttributes(
+      {super.key, required this.onUpdateCrossAxisAlignment});
 
   final ValueChanged<int> onUpdateCrossAxisAlignment;
 
@@ -27,7 +28,7 @@ class BaselineLayoutAttributesState extends State<BaselineLayoutAttributes> {
               'center',
               //'stretch',
             ],
-            onChange: widget.onUpdateCrossAxisAlignment,
+            onIndexChanged: widget.onUpdateCrossAxisAlignment,
           ),
         ),
       ],

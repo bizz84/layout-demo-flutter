@@ -22,34 +22,37 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.nested,
         onLayoutToggle: onLayoutToggle,
       ),
-      body: _buildContent(),
-    );
-  }
-
-  Widget _buildContent() {
-    return ListView.builder(
+      body: ListView.builder(
         itemCount: 16,
         itemBuilder: (BuildContext content, int index) {
-          return _buildHorizontalList(parentIndex: index);
-        });
+          return NestedHorizontalListView(parentIndex: index);
+        },
+      ),
+    );
   }
+}
 
-  Widget _buildHorizontalList({required int parentIndex}) {
-    var colors = [
+class NestedHorizontalListView extends StatelessWidget {
+  const NestedHorizontalListView({super.key, required this.parentIndex});
+  final int parentIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    const colors = [
       Colors.green,
       Colors.blue,
       Colors.indigo,
       Colors.red,
       Colors.orange
     ];
-    double height = 136.0;
+    const height = 136.0;
     return SizedBox(
       height: height,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 20,
           itemBuilder: (BuildContext content, int index) {
-            return _buildItem(
+            return ListViewColoredItem(
               index: index + 1,
               color: colors[(parentIndex + index) % colors.length],
               parentSize: height,
@@ -57,12 +60,21 @@ class NestedPage extends StatelessWidget implements HasLayoutGroup {
           }),
     );
   }
+}
 
-  Widget _buildItem({
-    required int index,
-    required Color color,
-    required double parentSize,
-  }) {
+class ListViewColoredItem extends StatelessWidget {
+  const ListViewColoredItem({
+    super.key,
+    required this.index,
+    required this.color,
+    required this.parentSize,
+  });
+  final int index;
+  final Color color;
+  final double parentSize;
+
+  @override
+  Widget build(BuildContext context) {
     double edgeSize = 8.0;
     double itemSize = parentSize - edgeSize * 2.0;
     return Padding(

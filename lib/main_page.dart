@@ -52,6 +52,75 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: switch (_layoutSelection) {
+        LayoutType.rowColumn => RowColumnPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.baseline => BaselinePage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.stack => StackPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.expanded => ExpandedPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.padding => PaddingPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.pageView => PageViewPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.list => ListPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.slivers => SliversPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.hero => HeroPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+        LayoutType.nested => NestedPage(
+            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+      },
+      bottomNavigationBar: () {
+        if (_layoutGroup == LayoutGroup.nonScrollable) {
+          return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: [
+              _buildItem(
+                  icon: Icons.view_headline,
+                  layoutSelection: LayoutType.rowColumn),
+              _buildItem(
+                  icon: Icons.format_size,
+                  layoutSelection: LayoutType.baseline),
+              _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
+              _buildItem(
+                  icon: Icons.line_weight,
+                  layoutSelection: LayoutType.expanded),
+              _buildItem(
+                  icon: Icons.format_line_spacing,
+                  layoutSelection: LayoutType.padding),
+            ],
+            onTap: _onSelectTab,
+          );
+        } else {
+          return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: [
+              _buildItem(
+                  icon: Icons.view_week, layoutSelection: LayoutType.pageView),
+              _buildItem(
+                  icon: Icons.format_list_bulleted,
+                  layoutSelection: LayoutType.list),
+              _buildItem(
+                  icon: Icons.view_day, layoutSelection: LayoutType.slivers),
+              _buildItem(
+                  icon: Icons.gradient, layoutSelection: LayoutType.hero),
+              _buildItem(
+                  icon: Icons.dashboard, layoutSelection: LayoutType.nested),
+            ],
+            onTap: _onSelectTab,
+          );
+        }
+      }(),
+    );
+  }
+
   Color _colorTabMatching({required LayoutType layoutSelection}) {
     if (_layoutGroup == LayoutGroup.nonScrollable) {
       return _layoutSelection1 == layoutSelection ? Colors.orange : Colors.grey;
@@ -71,76 +140,6 @@ class _MainPageState extends State<MainPage> {
         color: _colorTabMatching(layoutSelection: layoutSelection),
       ),
       label: text,
-    );
-  }
-
-  Widget? _buildBody() {
-    return <LayoutType, WidgetBuilder>{
-      LayoutType.rowColumn: (_) => RowColumnPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.baseline: (_) => BaselinePage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.stack: (_) => StackPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.expanded: (_) => ExpandedPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.padding: (_) => PaddingPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.pageView: (_) => PageViewPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.list: (_) => ListPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.slivers: (_) => SliversPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.hero: (_) => HeroPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-      LayoutType.nested: (_) => NestedPage(
-          layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
-    }[_layoutSelection]
-        ?.call(context);
-  }
-
-  Widget _buildBottomNavigationBar() {
-    if (_layoutGroup == LayoutGroup.nonScrollable) {
-      return BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-          _buildItem(
-              icon: Icons.view_headline, layoutSelection: LayoutType.rowColumn),
-          _buildItem(
-              icon: Icons.format_size, layoutSelection: LayoutType.baseline),
-          _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
-          _buildItem(
-              icon: Icons.line_weight, layoutSelection: LayoutType.expanded),
-          _buildItem(
-              icon: Icons.format_line_spacing,
-              layoutSelection: LayoutType.padding),
-        ],
-        onTap: _onSelectTab,
-      );
-    } else {
-      return BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-          _buildItem(
-              icon: Icons.view_week, layoutSelection: LayoutType.pageView),
-          _buildItem(
-              icon: Icons.format_list_bulleted,
-              layoutSelection: LayoutType.list),
-          _buildItem(icon: Icons.view_day, layoutSelection: LayoutType.slivers),
-          _buildItem(icon: Icons.gradient, layoutSelection: LayoutType.hero),
-          _buildItem(icon: Icons.dashboard, layoutSelection: LayoutType.nested),
-        ],
-        onTap: _onSelectTab,
-      );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _buildBody(),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 }

@@ -14,7 +14,33 @@ class PageViewPage extends StatelessWidget implements HasLayoutGroup {
   @override
   final VoidCallback onLayoutToggle;
 
-  Widget _buildPage({required int index, required Color color}) {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: MainAppBar(
+        layoutGroup: layoutGroup,
+        layoutType: LayoutType.pageView,
+        onLayoutToggle: onLayoutToggle,
+      ),
+      body: PageView(
+        children: const [
+          PageContent(index: 1, color: Colors.green),
+          PageContent(index: 2, color: Colors.blue),
+          PageContent(index: 3, color: Colors.indigo),
+          PageContent(index: 4, color: Colors.red),
+        ],
+      ),
+    );
+  }
+}
+
+class PageContent extends StatelessWidget {
+  const PageContent({super.key, required this.index, required this.color});
+  final int index;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
     return ColoredBox(
       color: color,
       child: Align(
@@ -24,29 +50,6 @@ class PageViewPage extends StatelessWidget implements HasLayoutGroup {
           style: const TextStyle(fontSize: 132.0, color: Colors.white),
         ),
       ),
-    );
-  }
-
-  Widget _buildPageView() {
-    return PageView(
-      children: [
-        _buildPage(index: 1, color: Colors.green),
-        _buildPage(index: 2, color: Colors.blue),
-        _buildPage(index: 3, color: Colors.indigo),
-        _buildPage(index: 4, color: Colors.red),
-      ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MainAppBar(
-        layoutGroup: layoutGroup,
-        layoutType: LayoutType.pageView,
-        onLayoutToggle: onLayoutToggle,
-      ),
-      body: _buildPageView(),
     );
   }
 }

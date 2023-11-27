@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 
 class MainAppBar extends AppBar {
-  MainAppBar({
+  MainAppBar({super.key, 
     required LayoutGroup layoutGroup,
     required LayoutType layoutType,
     PreferredSize? bottom,

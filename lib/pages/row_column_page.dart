@@ -4,17 +4,19 @@ import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/row_column_layout_attributes.dart';
 
 class RowColumnPage extends StatefulWidget implements HasLayoutGroup {
-  RowColumnPage({
-    Key? key,
+  const RowColumnPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   @override
-  _RowColumnPageState createState() => new _RowColumnPageState();
+  State<RowColumnPage> createState() => _RowColumnPageState();
 }
 
 class _RowColumnPageState extends State<RowColumnPage> {
@@ -87,7 +89,7 @@ class _RowColumnPageState extends State<RowColumnPage> {
         mainAxisAlignment: _mainAxisAlignment,
         crossAxisAlignment: _crossAxisAlignment,
         mainAxisSize: _mainAxisSize,
-        children: [
+        children: const [
           Icon(Icons.stars, size: 50.0),
           Icon(Icons.stars, size: 100.0),
           Icon(Icons.stars, size: 50.0),
@@ -98,7 +100,7 @@ class _RowColumnPageState extends State<RowColumnPage> {
         mainAxisAlignment: _mainAxisAlignment,
         crossAxisAlignment: _crossAxisAlignment,
         mainAxisSize: _mainAxisSize,
-        children: [
+        children: const [
           Icon(Icons.stars, size: 50.0),
           Icon(Icons.stars, size: 100.0),
           Icon(Icons.stars, size: 50.0),
@@ -114,12 +116,12 @@ class _RowColumnPageState extends State<RowColumnPage> {
         layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.rowColumn,
         bottom: PreferredSize(
-          preferredSize: Size(0.0, 160.0),
+          preferredSize: const Size(0.0, 160.0),
           child: _buildLayoutAttributesPage(),
         ),
         onLayoutToggle: widget.onLayoutToggle,
       ),
-      body: Container(color: Colors.yellow, child: buildContent()),
+      body: ColoredBox(color: Colors.yellow, child: buildContent()),
     );
   }
 

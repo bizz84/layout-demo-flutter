@@ -3,13 +3,15 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
-  ExpandedPage({
-    Key? key,
+  const ExpandedPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   @override
@@ -20,9 +22,7 @@ class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.expanded,
         onLayoutToggle: onLayoutToggle,
       ),
-      body: Container(
-        child: _buildContent(),
-      ),
+      body: _buildContent(),
     );
   }
 
@@ -33,13 +33,15 @@ class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
   }) {
     return Expanded(
       flex: points,
-      child: Container(
-        constraints: BoxConstraints.expand(),
-        color: color,
-        child: Center(
-          child: Text(
-            '$points',
-            style: TextStyle(fontSize: 32.0, color: textColor),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints.expand(),
+        child: ColoredBox(
+          color: color,
+          child: Center(
+            child: Text(
+              '$points',
+              style: TextStyle(fontSize: 32.0, color: textColor),
+            ),
           ),
         ),
       ),
@@ -61,7 +63,7 @@ class ExpandedPage extends StatelessWidget implements HasLayoutGroup {
     return LayoutBuilder(builder: (content, constraints) {
       Size size = _goldenRatio(constraints);
       return Center(
-        child: Container(
+        child: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: size.width,
             maxHeight: size.height,

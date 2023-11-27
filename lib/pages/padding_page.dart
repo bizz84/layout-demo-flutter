@@ -3,13 +3,15 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class PaddingPage extends StatelessWidget implements HasLayoutGroup {
-  PaddingPage({
-    Key? key,
+  const PaddingPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   Widget _buildText({
@@ -17,13 +19,15 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
     required Color color,
     Color textColor = Colors.white,
   }) {
-    return Container(
-      alignment: AlignmentDirectional.center,
+    return ColoredBox(
       color: color,
-      child: Text(
-        text,
-        style: TextStyle(color: textColor, fontSize: 32.0),
-        textAlign: TextAlign.center,
+      child: Align(
+        alignment: AlignmentDirectional.center,
+        child: Text(
+          text,
+          style: TextStyle(color: textColor, fontSize: 32.0),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
@@ -81,7 +85,8 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
 }
 
 class VerticalPadding extends StatelessWidget {
-  VerticalPadding({
+  const VerticalPadding({
+    super.key,
     required this.child,
     this.padding = 16.0,
     this.color = Colors.white,
@@ -93,10 +98,12 @@ class VerticalPadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ColoredBox(
       color: color,
-      padding: EdgeInsets.symmetric(vertical: padding),
-      child: child,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: padding),
+        child: child,
+      ),
     );
   }
 }

@@ -4,13 +4,15 @@ import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/baseline_layout_attributes.dart';
 
 class BaselinePage extends StatefulWidget implements HasLayoutGroup {
-  BaselinePage({
-    Key? key,
+  const BaselinePage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   @override
@@ -49,13 +51,13 @@ class BaselinePageState extends State<BaselinePage> {
         layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.baseline,
         bottom: PreferredSize(
-          preferredSize: Size(0.0, 80.0),
+          preferredSize: const Size(0.0, 80.0),
           child: _buildLayoutAttributesPage(),
         ),
         onLayoutToggle: widget.onLayoutToggle,
       ),
-      body: Container(
-        padding: EdgeInsets.all(15.0),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
         child: _buildContent(),
       ),
     );
@@ -64,12 +66,12 @@ class BaselinePageState extends State<BaselinePage> {
   Widget _buildContent() {
     return Column(
       children: [
-        Container(
+        ColoredBox(
           color: Colors.yellow,
           child: Row(
             crossAxisAlignment: _crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
-            children: [
+            children: const [
               Text(
                 'Flutter',
                 style: TextStyle(fontSize: 24.0, color: Colors.blue),
@@ -92,13 +94,13 @@ class BaselinePageState extends State<BaselinePage> {
             ],
           ),
         ),
-        SizedBox(height: 30.0),
-        Container(
+        const SizedBox(height: 30.0),
+        ColoredBox(
           color: Colors.yellow,
           child: Row(
             crossAxisAlignment: _crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
-            children: [
+            children: const [
               Text(
                 'Big',
                 style: TextStyle(fontSize: 48.0, color: Colors.blue),

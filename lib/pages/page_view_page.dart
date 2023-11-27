@@ -3,22 +3,26 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class PageViewPage extends StatelessWidget implements HasLayoutGroup {
-  PageViewPage({
-    Key? key,
+  const PageViewPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   Widget _buildPage({required int index, required Color color}) {
-    return Container(
-      alignment: AlignmentDirectional.center,
+    return ColoredBox(
       color: color,
-      child: Text(
-        '$index',
-        style: TextStyle(fontSize: 132.0, color: Colors.white),
+      child: Align(
+        alignment: AlignmentDirectional.center,
+        child: Text(
+          '$index',
+          style: const TextStyle(fontSize: 132.0, color: Colors.white),
+        ),
       ),
     );
   }

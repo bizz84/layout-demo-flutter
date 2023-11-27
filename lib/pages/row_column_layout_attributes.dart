@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attribute_selector.dart';
 
 class RowColumnLayoutAttributes extends StatelessWidget {
-  RowColumnLayoutAttributes({
+  const RowColumnLayoutAttributes({super.key, 
     required this.onUpdateLayout,
     required this.onUpdateMainAxisAlignment,
     required this.onUpdateCrossAxisAlignment,
@@ -25,12 +25,12 @@ class RowColumnLayoutAttributes extends StatelessWidget {
               child: Column(children: <Widget>[
                 LayoutAttributeSelector(
                   title: 'Layout',
-                  values: ['row', 'column'],
+                  values: const ['row', 'column'],
                   onChange: onUpdateLayout,
                 ),
                 LayoutAttributeSelector(
                   title: 'Main Axis Size',
-                  values: ['min', 'max'],
+                  values: const ['min', 'max'],
                   onChange: onUpdateMainAxisSize,
                 ),
               ])),
@@ -39,7 +39,7 @@ class RowColumnLayoutAttributes extends StatelessWidget {
               child: Column(children: [
                 LayoutAttributeSelector(
                   title: 'Main Axis Alignment',
-                  values: [
+                  values: const [
                     'start',
                     'end',
                     'center',
@@ -51,7 +51,7 @@ class RowColumnLayoutAttributes extends StatelessWidget {
                 ),
                 LayoutAttributeSelector(
                   title: 'Cross Axis Alignment',
-                  values: [
+                  values: const [
                     'start',
                     'end',
                     'center',

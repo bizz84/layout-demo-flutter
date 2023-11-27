@@ -9,13 +9,15 @@ class Contact {
 }
 
 class ListPage extends StatelessWidget implements HasLayoutGroup {
-  ListPage({
-    Key? key,
+  const ListPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   @override
@@ -26,9 +28,7 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.list,
         onLayoutToggle: onLayoutToggle,
       ),
-      body: Container(
-        child: _buildContent(),
-      ),
+      body: _buildContent(),
     );
   }
 
@@ -43,7 +43,7 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
 }
 
 class ContactListTile extends ListTile {
-  ContactListTile(Contact contact)
+  ContactListTile(Contact contact, {super.key})
       : super(
           title: Text(contact.name),
           subtitle: Text(contact.email),

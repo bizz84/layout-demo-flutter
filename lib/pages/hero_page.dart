@@ -11,7 +11,9 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
   });
   final LayoutGroup layoutGroup;
   final VoidCallback onLayoutToggle;
+  @override
   double maxExtent;
+  @override
   double minExtent;
 
   @override
@@ -24,7 +26,7 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
           'assets/ronnie-mayo-361348-unsplash.jpg',
           fit: BoxFit.cover,
         ),
-        Container(
+        const DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -50,7 +52,7 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
             ),
           ),
         ),
-        Positioned(
+        const Positioned(
           left: 16.0,
           right: 16.0,
           bottom: 16.0,
@@ -85,12 +87,14 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
 
 class HeroPage extends StatelessWidget implements HasLayoutGroup {
   HeroPage({
-    Key? key,
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   final List<String> assetNames = [
@@ -113,48 +117,50 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
 
   Widget _scrollView(BuildContext context) {
     // Use LayoutBuilder to get the hero header size while keeping the image aspect-ratio
-    return Container(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: HeroHeader(
-              layoutGroup: layoutGroup,
-              onLayoutToggle: onLayoutToggle,
-              minExtent: 150.0,
-              maxExtent: 250.0,
-            ),
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: HeroHeader(
+            layoutGroup: layoutGroup,
+            onLayoutToggle: onLayoutToggle,
+            minExtent: 150.0,
+            maxExtent: 250.0,
           ),
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 0.0,
-              crossAxisSpacing: 0.0,
-              childAspectRatio: 0.75,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
+        ),
+        SliverGrid(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200.0,
+            mainAxisSpacing: 0.0,
+            crossAxisSpacing: 0.0,
+            childAspectRatio: 0.75,
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Padding(
+                padding: _edgeInsetsForIndex(index),
+                child: Align(
                   alignment: Alignment.center,
-                  padding: _edgeInsetsForIndex(index),
                   child: Image.asset(
                     assetNames[index % assetNames.length],
                   ),
-                );
-              },
-              childCount: assetNames.length * 2,
-            ),
+                ),
+              );
+            },
+            childCount: assetNames.length * 2,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
   EdgeInsets _edgeInsetsForIndex(int index) {
     if (index % 2 == 0) {
-      return EdgeInsets.only(top: 4.0, left: 8.0, right: 4.0, bottom: 4.0);
+      return const EdgeInsets.only(
+          top: 4.0, left: 8.0, right: 4.0, bottom: 4.0);
     } else {
-      return EdgeInsets.only(top: 4.0, left: 4.0, right: 8.0, bottom: 4.0);
+      return const EdgeInsets.only(
+          top: 4.0, left: 4.0, right: 8.0, bottom: 4.0);
     }
   }
 }

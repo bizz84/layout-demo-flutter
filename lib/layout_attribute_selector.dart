@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LayoutAttributeSelector extends StatefulWidget {
-  LayoutAttributeSelector({
+  const LayoutAttributeSelector({
+    super.key,
     required this.title,
     required this.values,
     this.disabled = false,
@@ -37,35 +38,33 @@ class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Divider(color: Colors.black54),
-        Text(widget.title),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              padding: EdgeInsets.all(4.0),
-              icon: Icon(Icons.arrow_back),
-              onPressed: widget.disabled ? null : previous,
+    return Column(children: [
+      const Divider(color: Colors.black54),
+      Text(widget.title),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          IconButton(
+            padding: const EdgeInsets.all(4.0),
+            icon: const Icon(Icons.arrow_back),
+            onPressed: widget.disabled ? null : previous,
+          ),
+          Text(
+            widget.values[valueIndex],
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: widget.disabled ? Colors.black26 : Colors.black87,
             ),
-            Text(
-              widget.values[valueIndex],
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                color: widget.disabled ? Colors.black26 : Colors.black87,
-              ),
-            ),
-            IconButton(
-              padding: EdgeInsets.all(4.0),
-              icon: Icon(Icons.arrow_forward),
-              onPressed: widget.disabled ? null : next,
-            ),
-          ],
-        ),
-      ]),
-    );
+          ),
+          IconButton(
+            padding: const EdgeInsets.all(4.0),
+            icon: const Icon(Icons.arrow_forward),
+            onPressed: widget.disabled ? null : next,
+          ),
+        ],
+      ),
+    ]);
   }
 }

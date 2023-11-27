@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Layouts Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: false,
         primarySwatch: Colors.orange,
       ),
       home: MainPage(),

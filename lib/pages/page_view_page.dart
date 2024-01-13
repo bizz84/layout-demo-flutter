@@ -3,36 +3,16 @@ import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
 class PageViewPage extends StatelessWidget implements HasLayoutGroup {
-  PageViewPage({
-    Key? key,
+  const PageViewPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
-
-  Widget _buildPage({required int index, required Color color}) {
-    return Container(
-      alignment: AlignmentDirectional.center,
-      color: color,
-      child: Text(
-        '$index',
-        style: TextStyle(fontSize: 132.0, color: Colors.white),
-      ),
-    );
-  }
-
-  Widget _buildPageView() {
-    return PageView(
-      children: [
-        _buildPage(index: 1, color: Colors.green),
-        _buildPage(index: 2, color: Colors.blue),
-        _buildPage(index: 3, color: Colors.indigo),
-        _buildPage(index: 4, color: Colors.red),
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +22,34 @@ class PageViewPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.pageView,
         onLayoutToggle: onLayoutToggle,
       ),
-      body: _buildPageView(),
+      body: PageView(
+        children: const [
+          PageContent(index: 1, color: Colors.green),
+          PageContent(index: 2, color: Colors.blue),
+          PageContent(index: 3, color: Colors.indigo),
+          PageContent(index: 4, color: Colors.red),
+        ],
+      ),
+    );
+  }
+}
+
+class PageContent extends StatelessWidget {
+  const PageContent({super.key, required this.index, required this.color});
+  final int index;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: color,
+      child: Align(
+        alignment: AlignmentDirectional.center,
+        child: Text(
+          '$index',
+          style: const TextStyle(fontSize: 132.0, color: Colors.white),
+        ),
+      ),
     );
   }
 }

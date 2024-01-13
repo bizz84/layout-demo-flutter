@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_attribute_selector.dart';
 
 class StackLayoutAttributes extends StatefulWidget {
-  StackLayoutAttributes({
+  const StackLayoutAttributes({
+    super.key,
     required this.onUpdateType,
     required this.onUpdateAlignment,
   });
@@ -33,17 +34,17 @@ class StackLayoutAttributesState extends State<StackLayoutAttributes> {
         Expanded(
           child: LayoutAttributeSelector(
             title: 'Type',
-            values: [
+            values: const [
               'align',
               'position',
             ],
-            onChange: _updateType,
+            onIndexChanged: _updateType,
           ),
         ),
         Expanded(
           child: LayoutAttributeSelector(
             title: 'Alignment',
-            values: [
+            values: const [
               'top\nstart',
               'top\ncenter',
               'top\nend',
@@ -55,7 +56,7 @@ class StackLayoutAttributesState extends State<StackLayoutAttributes> {
               'bottom\nend',
             ],
             disabled: _alignmentDisabled,
-            onChange: widget.onUpdateAlignment,
+            onIndexChanged: widget.onUpdateAlignment,
           ),
         ),
       ],

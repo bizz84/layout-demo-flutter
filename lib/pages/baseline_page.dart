@@ -4,13 +4,15 @@ import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/baseline_layout_attributes.dart';
 
 class BaselinePage extends StatefulWidget implements HasLayoutGroup {
-  BaselinePage({
-    Key? key,
+  const BaselinePage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   @override
@@ -20,21 +22,14 @@ class BaselinePage extends StatefulWidget implements HasLayoutGroup {
 class BaselinePageState extends State<BaselinePage> {
   CrossAxisAlignment _crossAxisAlignment = CrossAxisAlignment.baseline;
 
-  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) {
-    switch (index) {
-      case 0:
-        return CrossAxisAlignment.baseline;
-      case 1:
-        return CrossAxisAlignment.start;
-      case 2:
-        return CrossAxisAlignment.end;
-      case 3:
-        return CrossAxisAlignment.center;
-      case 4:
-        return CrossAxisAlignment.stretch;
-    }
-    return CrossAxisAlignment.start;
-  }
+  CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) => switch (index) {
+        0 => CrossAxisAlignment.baseline,
+        1 => CrossAxisAlignment.start,
+        2 => CrossAxisAlignment.end,
+        3 => CrossAxisAlignment.center,
+        4 => CrossAxisAlignment.stretch,
+        _ => CrossAxisAlignment.start,
+      };
 
   void _updateCrossAxisAlignment(int index) {
     setState(() {
@@ -49,27 +44,35 @@ class BaselinePageState extends State<BaselinePage> {
         layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.baseline,
         bottom: PreferredSize(
-          preferredSize: Size(0.0, 80.0),
-          child: _buildLayoutAttributesPage(),
+          preferredSize: const Size(0.0, 80.0),
+          child: BaselineLayoutAttributes(
+            onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
+          ),
         ),
         onLayoutToggle: widget.onLayoutToggle,
       ),
-      body: Container(
-        padding: EdgeInsets.all(15.0),
-        child: _buildContent(),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: BaselineContent(crossAxisAlignment: _crossAxisAlignment),
       ),
     );
   }
+}
 
-  Widget _buildContent() {
+class BaselineContent extends StatelessWidget {
+  const BaselineContent({super.key, required this.crossAxisAlignment});
+  final CrossAxisAlignment crossAxisAlignment;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        ColoredBox(
           color: Colors.yellow,
           child: Row(
-            crossAxisAlignment: _crossAxisAlignment,
+            crossAxisAlignment: crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
-            children: [
+            children: const [
               Text(
                 'Flutter',
                 style: TextStyle(fontSize: 24.0, color: Colors.blue),
@@ -92,13 +95,13 @@ class BaselinePageState extends State<BaselinePage> {
             ],
           ),
         ),
-        SizedBox(height: 30.0),
-        Container(
+        const SizedBox(height: 30.0),
+        ColoredBox(
           color: Colors.yellow,
           child: Row(
-            crossAxisAlignment: _crossAxisAlignment,
+            crossAxisAlignment: crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
-            children: [
+            children: const [
               Text(
                 'Big',
                 style: TextStyle(fontSize: 48.0, color: Colors.blue),
@@ -117,12 +120,6 @@ class BaselinePageState extends State<BaselinePage> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildLayoutAttributesPage() {
-    return BaselineLayoutAttributes(
-      onUpdateCrossAxisAlignment: _updateCrossAxisAlignment,
     );
   }
 }

@@ -84,6 +84,9 @@ unlinked_spec.ds
 **/ios/Runner/GeneratedPluginRegistrant.*
 **/ios/Flutter/flutter_export_environment.sh
 
+# Web related
+.firebase/hosting*
+
 # web
 web/firebase-config.js
 

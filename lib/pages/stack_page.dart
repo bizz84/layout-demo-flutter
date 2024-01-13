@@ -1,140 +1,53 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 import 'package:layout_demo_flutter/pages/stack_layout_attributes.dart';
 
 class StackPage extends StatefulWidget implements HasLayoutGroup {
-  StackPage({
-    Key? key,
+  const StackPage({
+    super.key,
     required this.layoutGroup,
     required this.onLayoutToggle,
-  }) : super(key: key);
+  });
 
+  @override
   final LayoutGroup layoutGroup;
+  @override
   final VoidCallback onLayoutToggle;
 
   @override
-  _StackPageState createState() => new _StackPageState();
+  State<StackPage> createState() => _StackPageState();
 }
 
 class _StackPageState extends State<StackPage> {
   bool _useAlignment = true;
   AlignmentDirectional _alignmentDirectional = AlignmentDirectional.topStart;
 
-  AlignmentDirectional alignmentFromIndex(int index) {
-    switch (index) {
-      case 0:
-        return AlignmentDirectional.topStart;
-      case 1:
-        return AlignmentDirectional.topCenter;
-      case 2:
-        return AlignmentDirectional.topEnd;
-      case 3:
-        return AlignmentDirectional.centerStart;
-      case 4:
-        return AlignmentDirectional.center;
-      case 5:
-        return AlignmentDirectional.centerEnd;
-      case 6:
-        return AlignmentDirectional.bottomStart;
-      case 7:
-        return AlignmentDirectional.bottomCenter;
-      case 8:
-        return AlignmentDirectional.bottomEnd;
-    }
-    return AlignmentDirectional.center;
-  }
+  AlignmentDirectional _alignmentFromIndex(int index) => switch (index) {
+        0 => AlignmentDirectional.topStart,
+        1 => AlignmentDirectional.topCenter,
+        2 => AlignmentDirectional.topEnd,
+        3 => AlignmentDirectional.centerStart,
+        4 => AlignmentDirectional.center,
+        5 => AlignmentDirectional.centerEnd,
+        6 => AlignmentDirectional.bottomStart,
+        7 => AlignmentDirectional.bottomCenter,
+        8 => AlignmentDirectional.bottomEnd,
+        _ => AlignmentDirectional.center,
+      };
 
-  void updateAlignment(int index) {
+  void _updateAlignment(int index) {
     setState(() {
-      _alignmentDirectional = alignmentFromIndex(index);
+      _alignmentDirectional = _alignmentFromIndex(index);
     });
   }
 
-  void updateType(int index) {
+  void _updateType(int index) {
     setState(() {
       _useAlignment = index == 0;
     });
-  }
-
-  Widget _buildStack() {
-    if (_useAlignment) {
-      return Stack(
-        alignment: _alignmentDirectional,
-        children: <Widget>[
-          SizedBox(
-            width: 300.0,
-            height: 300.0,
-            child: Container(
-              color: Colors.green,
-            ),
-          ),
-          SizedBox(
-            width: 200.0,
-            height: 200.0,
-            child: Container(
-              color: Colors.yellow,
-            ),
-          ),
-          SizedBox(
-            width: 100.0,
-            height: 100.0,
-            child: Container(
-              color: Colors.red,
-            ),
-          ),
-        ],
-      );
-    } else {
-      return Stack(
-        alignment: _alignmentDirectional,
-        children: <Widget>[
-          SizedBox(
-            width: 300.0,
-            height: 300.0,
-            child: Container(
-              color: Colors.yellow,
-            ),
-          ),
-          Positioned(
-            left: 20.0,
-            top: 20.0,
-            width: 100.0,
-            height: 100.0,
-            child: Container(
-              color: Colors.indigo,
-            ),
-          ),
-          Positioned(
-            right: 40.0,
-            top: 40.0,
-            width: 100.0,
-            height: 100.0,
-            child: Container(
-              color: Colors.red,
-            ),
-          ),
-          Positioned(
-            left: 40.0,
-            bottom: 40.0,
-            width: 100.0,
-            height: 100.0,
-            child: Container(
-              color: Colors.green,
-            ),
-          ),
-          Positioned(
-            bottom: 20.0,
-            right: 20.0,
-            width: 100.0,
-            height: 100.0,
-            child: Container(
-              color: Colors.blue,
-            ),
-          ),
-        ],
-      );
-    }
   }
 
   @override
@@ -144,21 +57,111 @@ class _StackPageState extends State<StackPage> {
         layoutGroup: widget.layoutGroup,
         layoutType: LayoutType.stack,
         bottom: PreferredSize(
-          preferredSize: Size(0.0, 80.0),
-          child: _buildLayoutAttributesPage(),
+          preferredSize: const Size(0.0, 80.0),
+          child: StackLayoutAttributes(
+            onUpdateType: _updateType,
+            onUpdateAlignment: _updateAlignment,
+          ),
         ),
         onLayoutToggle: widget.onLayoutToggle,
       ),
       body: Center(
-        child: _buildStack(),
+        child: StackContent(
+          useAlignment: _useAlignment,
+          alignment: _alignmentDirectional,
+        ),
       ),
     );
   }
+}
 
-  Widget _buildLayoutAttributesPage() {
-    return StackLayoutAttributes(
-      onUpdateType: updateType,
-      onUpdateAlignment: updateAlignment,
-    );
+class StackContent extends StatelessWidget {
+  const StackContent({
+    super.key,
+    required this.useAlignment,
+    required this.alignment,
+  });
+  final bool useAlignment;
+  final AlignmentDirectional alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    if (useAlignment) {
+      return Stack(
+        alignment: alignment,
+        children: const <Widget>[
+          SizedBox(
+            width: 300.0,
+            height: 300.0,
+            child: ColoredBox(
+              color: Colors.green,
+            ),
+          ),
+          SizedBox(
+            width: 200.0,
+            height: 200.0,
+            child: ColoredBox(
+              color: Colors.yellow,
+            ),
+          ),
+          SizedBox(
+            width: 100.0,
+            height: 100.0,
+            child: ColoredBox(
+              color: Colors.red,
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Stack(
+        alignment: alignment,
+        children: const <Widget>[
+          SizedBox(
+            width: 300.0,
+            height: 300.0,
+            child: ColoredBox(
+              color: Colors.yellow,
+            ),
+          ),
+          Positioned(
+            left: 20.0,
+            top: 20.0,
+            width: 100.0,
+            height: 100.0,
+            child: ColoredBox(
+              color: Colors.indigo,
+            ),
+          ),
+          Positioned(
+            right: 40.0,
+            top: 40.0,
+            width: 100.0,
+            height: 100.0,
+            child: ColoredBox(
+              color: Colors.red,
+            ),
+          ),
+          Positioned(
+            left: 40.0,
+            bottom: 40.0,
+            width: 100.0,
+            height: 100.0,
+            child: ColoredBox(
+              color: Colors.green,
+            ),
+          ),
+          Positioned(
+            bottom: 20.0,
+            right: 20.0,
+            width: 100.0,
+            height: 100.0,
+            child: ColoredBox(
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      );
+    }
   }
 }

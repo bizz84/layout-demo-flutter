@@ -14,7 +14,7 @@ You can run this project on your simulator or device.
 
 Oh, and the app itself is built with - guess what - a combination of Flutter layouts. So Meta! 😎
 
-### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
+### For more articles and video tutorials, check out [Code with Andrea](https://codewithandrea.com/).
 
 # Table of Contents
 

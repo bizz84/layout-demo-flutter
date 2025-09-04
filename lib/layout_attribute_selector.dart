@@ -38,33 +38,35 @@ class LayoutAttributeSelectorState extends State<LayoutAttributeSelector> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      const Divider(color: Colors.black54),
-      Text(widget.title),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            padding: const EdgeInsets.all(4.0),
-            icon: const Icon(Icons.arrow_back),
-            onPressed: widget.disabled ? null : _previous,
-          ),
-          Text(
-            widget.values[_valueIndex],
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              color: widget.disabled ? Colors.black26 : Colors.black87,
+    return Column(
+      children: [
+        const Divider(color: Colors.black54),
+        Text(widget.title),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              padding: const EdgeInsets.all(4.0),
+              icon: const Icon(Icons.arrow_back),
+              onPressed: widget.disabled ? null : _previous,
             ),
-          ),
-          IconButton(
-            padding: const EdgeInsets.all(4.0),
-            icon: const Icon(Icons.arrow_forward),
-            onPressed: widget.disabled ? null : _next,
-          ),
-        ],
-      ),
-    ]);
+            Text(
+              widget.values[_valueIndex],
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: widget.disabled ? Colors.black26 : Colors.black87,
+              ),
+            ),
+            IconButton(
+              padding: const EdgeInsets.all(4.0),
+              icon: const Icon(Icons.arrow_forward),
+              onPressed: widget.disabled ? null : _next,
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

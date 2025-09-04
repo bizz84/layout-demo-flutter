@@ -11,10 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Layouts Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: false,
-        primarySwatch: Colors.orange,
-      ),
+      theme: ThemeData(useMaterial3: false, primarySwatch: Colors.orange),
       home: const MainPage(),
     );
   }

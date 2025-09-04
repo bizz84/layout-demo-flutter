@@ -26,17 +26,17 @@ class _StackPageState extends State<StackPage> {
   AlignmentDirectional _alignmentDirectional = AlignmentDirectional.topStart;
 
   AlignmentDirectional _alignmentFromIndex(int index) => switch (index) {
-        0 => AlignmentDirectional.topStart,
-        1 => AlignmentDirectional.topCenter,
-        2 => AlignmentDirectional.topEnd,
-        3 => AlignmentDirectional.centerStart,
-        4 => AlignmentDirectional.center,
-        5 => AlignmentDirectional.centerEnd,
-        6 => AlignmentDirectional.bottomStart,
-        7 => AlignmentDirectional.bottomCenter,
-        8 => AlignmentDirectional.bottomEnd,
-        _ => AlignmentDirectional.center,
-      };
+    0 => AlignmentDirectional.topStart,
+    1 => AlignmentDirectional.topCenter,
+    2 => AlignmentDirectional.topEnd,
+    3 => AlignmentDirectional.centerStart,
+    4 => AlignmentDirectional.center,
+    5 => AlignmentDirectional.centerEnd,
+    6 => AlignmentDirectional.bottomStart,
+    7 => AlignmentDirectional.bottomCenter,
+    8 => AlignmentDirectional.bottomEnd,
+    _ => AlignmentDirectional.center,
+  };
 
   void _updateAlignment(int index) {
     setState(() {
@@ -93,23 +93,17 @@ class StackContent extends StatelessWidget {
           SizedBox(
             width: 300.0,
             height: 300.0,
-            child: ColoredBox(
-              color: Colors.green,
-            ),
+            child: ColoredBox(color: Colors.green),
           ),
           SizedBox(
             width: 200.0,
             height: 200.0,
-            child: ColoredBox(
-              color: Colors.yellow,
-            ),
+            child: ColoredBox(color: Colors.yellow),
           ),
           SizedBox(
             width: 100.0,
             height: 100.0,
-            child: ColoredBox(
-              color: Colors.red,
-            ),
+            child: ColoredBox(color: Colors.red),
           ),
         ],
       );
@@ -120,45 +114,35 @@ class StackContent extends StatelessWidget {
           SizedBox(
             width: 300.0,
             height: 300.0,
-            child: ColoredBox(
-              color: Colors.yellow,
-            ),
+            child: ColoredBox(color: Colors.yellow),
           ),
           Positioned(
             left: 20.0,
             top: 20.0,
             width: 100.0,
             height: 100.0,
-            child: ColoredBox(
-              color: Colors.indigo,
-            ),
+            child: ColoredBox(color: Colors.indigo),
           ),
           Positioned(
             right: 40.0,
             top: 40.0,
             width: 100.0,
             height: 100.0,
-            child: ColoredBox(
-              color: Colors.red,
-            ),
+            child: ColoredBox(color: Colors.red),
           ),
           Positioned(
             left: 40.0,
             bottom: 40.0,
             width: 100.0,
             height: 100.0,
-            child: ColoredBox(
-              color: Colors.green,
-            ),
+            child: ColoredBox(color: Colors.green),
           ),
           Positioned(
             bottom: 20.0,
             right: 20.0,
             width: 100.0,
             height: 100.0,
-            child: ColoredBox(
-              color: Colors.blue,
-            ),
+            child: ColoredBox(color: Colors.blue),
           ),
         ],
       );

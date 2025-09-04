@@ -54,9 +54,13 @@ class ExpandedContent extends StatelessWidget {
                               child: Column(
                                 children: [
                                   ExpandedColoredBox(
-                                      points: 1, color: Colors.green),
+                                    points: 1,
+                                    color: Colors.green,
+                                  ),
                                   ExpandedColoredBox(
-                                      points: 1, color: Colors.blue),
+                                    points: 1,
+                                    color: Colors.blue,
+                                  ),
                                 ],
                               ),
                             ),
@@ -83,18 +87,20 @@ class CenteredGoldenRatioLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (content, constraints) {
-      final size = _goldenRatio(constraints);
-      return Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: size.width,
-            maxHeight: size.height,
+    return LayoutBuilder(
+      builder: (content, constraints) {
+        final size = _goldenRatio(constraints);
+        return Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: size.width,
+              maxHeight: size.height,
+            ),
+            child: child,
           ),
-          child: child,
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   Size _goldenRatio(BoxConstraints constraints) {

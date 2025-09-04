@@ -36,7 +36,10 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
           const SizedBox(
             height: 50.0,
             child: ColoredText(
-                text: '50 pt', color: Colors.white, textColor: Colors.black),
+              text: '50 pt',
+              color: Colors.white,
+              textColor: Colors.black,
+            ),
           ),
           VerticalPadding(
             color: Colors.blue[100] ?? Colors.blue,
@@ -45,7 +48,10 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
           const Expanded(
             flex: 1,
             child: ColoredText(
-                text: 'flex: 1', color: Colors.white, textColor: Colors.black),
+              text: 'flex: 1',
+              color: Colors.white,
+              textColor: Colors.black,
+            ),
           ),
           VerticalPadding(
             color: Colors.purple[100] ?? Colors.purple,
@@ -54,7 +60,10 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
           const Expanded(
             flex: 2,
             child: ColoredText(
-                text: 'flex: 2', color: Colors.white, textColor: Colors.black),
+              text: 'flex: 2',
+              color: Colors.white,
+              textColor: Colors.black,
+            ),
           ),
           VerticalPadding(
             color: Colors.brown[100] ?? Colors.brown,

@@ -22,8 +22,9 @@ class RowColumnLayoutAttributes extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
-            flex: 1,
-            child: Column(children: <Widget>[
+          flex: 1,
+          child: Column(
+            children: <Widget>[
               LayoutAttributeSelector(
                 title: 'Layout',
                 values: const ['row', 'column'],
@@ -34,7 +35,9 @@ class RowColumnLayoutAttributes extends StatelessWidget {
                 values: const ['min', 'max'],
                 onIndexChanged: onUpdateMainAxisSize,
               ),
-            ])),
+            ],
+          ),
+        ),
         Expanded(
           flex: 1,
           child: Column(
@@ -47,7 +50,7 @@ class RowColumnLayoutAttributes extends StatelessWidget {
                   'center',
                   'space\nbetween',
                   'space\naround',
-                  'space\nevenly'
+                  'space\nevenly',
                 ],
                 onIndexChanged: onUpdateMainAxisAlignment,
               ),
@@ -57,7 +60,7 @@ class RowColumnLayoutAttributes extends StatelessWidget {
                   'start',
                   'end',
                   'center',
-                  'stretch', /*'baseline'*/
+                  'stretch' /*'baseline'*/,
                 ],
                 onIndexChanged: onUpdateCrossAxisAlignment,
               ),

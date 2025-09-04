@@ -23,13 +23,13 @@ class BaselinePageState extends State<BaselinePage> {
   CrossAxisAlignment _crossAxisAlignment = CrossAxisAlignment.baseline;
 
   CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) => switch (index) {
-        0 => CrossAxisAlignment.baseline,
-        1 => CrossAxisAlignment.start,
-        2 => CrossAxisAlignment.end,
-        3 => CrossAxisAlignment.center,
-        4 => CrossAxisAlignment.stretch,
-        _ => CrossAxisAlignment.start,
-      };
+    0 => CrossAxisAlignment.baseline,
+    1 => CrossAxisAlignment.start,
+    2 => CrossAxisAlignment.end,
+    3 => CrossAxisAlignment.center,
+    4 => CrossAxisAlignment.stretch,
+    _ => CrossAxisAlignment.start,
+  };
 
   void _updateCrossAxisAlignment(int index) {
     setState(() {
@@ -102,10 +102,7 @@ class BaselineContent extends StatelessWidget {
             crossAxisAlignment: crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
             children: const [
-              Text(
-                'Big',
-                style: TextStyle(fontSize: 48.0, color: Colors.blue),
-              ),
+              Text('Big', style: TextStyle(fontSize: 48.0, color: Colors.blue)),
               SizedBox(width: 5.0),
               Text(
                 'Medium',

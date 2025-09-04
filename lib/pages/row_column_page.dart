@@ -26,23 +26,23 @@ class _RowColumnPageState extends State<RowColumnPage> {
   var _mainAxisSize = MainAxisSize.min;
 
   MainAxisAlignment _mainAxisAlignmentFromIndex(int index) => switch (index) {
-        0 => MainAxisAlignment.start,
-        1 => MainAxisAlignment.end,
-        2 => MainAxisAlignment.center,
-        3 => MainAxisAlignment.spaceBetween,
-        4 => MainAxisAlignment.spaceAround,
-        5 => MainAxisAlignment.spaceEvenly,
-        _ => MainAxisAlignment.start,
-      };
+    0 => MainAxisAlignment.start,
+    1 => MainAxisAlignment.end,
+    2 => MainAxisAlignment.center,
+    3 => MainAxisAlignment.spaceBetween,
+    4 => MainAxisAlignment.spaceAround,
+    5 => MainAxisAlignment.spaceEvenly,
+    _ => MainAxisAlignment.start,
+  };
 
   CrossAxisAlignment _crossAxisAlignmentFromIndex(int index) => switch (index) {
-        0 => CrossAxisAlignment.baseline,
-        1 => CrossAxisAlignment.start,
-        2 => CrossAxisAlignment.end,
-        3 => CrossAxisAlignment.center,
-        4 => CrossAxisAlignment.stretch,
-        _ => CrossAxisAlignment.start,
-      };
+    0 => CrossAxisAlignment.baseline,
+    1 => CrossAxisAlignment.start,
+    2 => CrossAxisAlignment.end,
+    3 => CrossAxisAlignment.center,
+    4 => CrossAxisAlignment.stretch,
+    _ => CrossAxisAlignment.start,
+  };
 
   void _updateLayout(int index) {
     setState(() {

@@ -41,11 +41,11 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
 
 class ContactListTile extends ListTile {
   ContactListTile(Contact contact, {super.key})
-      : super(
-          title: Text(contact.name),
-          subtitle: Text(contact.email),
-          leading: CircleAvatar(child: Text(contact.name[0])),
-        );
+    : super(
+        title: Text(contact.name),
+        subtitle: Text(contact.email),
+        leading: CircleAvatar(child: Text(contact.name[0])),
+      );
 }
 
 List<Contact> allContacts = [

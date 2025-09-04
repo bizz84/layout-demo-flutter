@@ -43,21 +43,22 @@ class NestedHorizontalListView extends StatelessWidget {
       Colors.blue,
       Colors.indigo,
       Colors.red,
-      Colors.orange
+      Colors.orange,
     ];
     const height = 136.0;
     return SizedBox(
       height: height,
       child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 20,
-          itemBuilder: (BuildContext content, int index) {
-            return ListViewColoredItem(
-              index: index + 1,
-              color: colors[(parentIndex + index) % colors.length],
-              parentSize: height,
-            );
-          }),
+        scrollDirection: Axis.horizontal,
+        itemCount: 20,
+        itemBuilder: (BuildContext content, int index) {
+          return ListViewColoredItem(
+            index: index + 1,
+            color: colors[(parentIndex + index) % colors.length],
+            parentSize: height,
+          );
+        },
+      ),
     );
   }
 }

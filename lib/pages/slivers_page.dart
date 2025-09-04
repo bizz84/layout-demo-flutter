@@ -22,9 +22,11 @@ class SliversPage extends StatelessWidget implements HasLayoutGroup {
           pinned: true,
           title: const Text('Slivers'),
           leading: IconButton(
-            icon: Icon(layoutGroup == LayoutGroup.nonScrollable
-                ? Icons.filter_1
-                : Icons.filter_2),
+            icon: Icon(
+              layoutGroup == LayoutGroup.nonScrollable
+                  ? Icons.filter_1
+                  : Icons.filter_2,
+            ),
             onPressed: onLayoutToggle,
           ),
         ),
@@ -35,33 +37,33 @@ class SliversPage extends StatelessWidget implements HasLayoutGroup {
             crossAxisSpacing: 10.0,
             childAspectRatio: 4.0,
           ),
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return ColoredBox(
-                color: Colors.teal[index % 9 == 0 ? 50 : 100 * (index % 9)]!,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text('grid item $index'),
-                ),
-              );
-            },
-            childCount: 20,
-          ),
+          delegate: SliverChildBuilderDelegate((
+            BuildContext context,
+            int index,
+          ) {
+            return ColoredBox(
+              color: Colors.teal[index % 9 == 0 ? 50 : 100 * (index % 9)]!,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text('grid item $index'),
+              ),
+            );
+          }, childCount: 20),
         ),
         SliverFixedExtentList(
           itemExtent: 50.0,
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return ColoredBox(
-                color:
-                    Colors.lightBlue[index % 9 == 0 ? 50 : 100 * (index % 9)]!,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text('list item $index'),
-                ),
-              );
-            },
-          ),
+          delegate: SliverChildBuilderDelegate((
+            BuildContext context,
+            int index,
+          ) {
+            return ColoredBox(
+              color: Colors.lightBlue[index % 9 == 0 ? 50 : 100 * (index % 9)]!,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text('list item $index'),
+              ),
+            );
+          }),
         ),
       ],
     );

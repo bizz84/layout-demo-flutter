@@ -57,25 +57,45 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: switch (_layoutSelection) {
         LayoutType.rowColumn => RowColumnPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.baseline => BaselinePage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.stack => StackPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.expanded => ExpandedPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.padding => PaddingPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.pageView => PageViewPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.list => ListPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.slivers => SliversPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.hero => HeroPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
         LayoutType.nested => NestedPage(
-            layoutGroup: _layoutGroup, onLayoutToggle: _onLayoutGroupToggle),
+          layoutGroup: _layoutGroup,
+          onLayoutToggle: _onLayoutGroupToggle,
+        ),
       },
       bottomNavigationBar: () {
         if (_layoutGroup == LayoutGroup.nonScrollable) {
@@ -83,18 +103,22 @@ class _MainPageState extends State<MainPage> {
             type: BottomNavigationBarType.fixed,
             items: [
               _buildItem(
-                  icon: Icons.view_headline,
-                  layoutSelection: LayoutType.rowColumn),
+                icon: Icons.view_headline,
+                layoutSelection: LayoutType.rowColumn,
+              ),
               _buildItem(
-                  icon: Icons.format_size,
-                  layoutSelection: LayoutType.baseline),
+                icon: Icons.format_size,
+                layoutSelection: LayoutType.baseline,
+              ),
               _buildItem(icon: Icons.layers, layoutSelection: LayoutType.stack),
               _buildItem(
-                  icon: Icons.line_weight,
-                  layoutSelection: LayoutType.expanded),
+                icon: Icons.line_weight,
+                layoutSelection: LayoutType.expanded,
+              ),
               _buildItem(
-                  icon: Icons.format_line_spacing,
-                  layoutSelection: LayoutType.padding),
+                icon: Icons.format_line_spacing,
+                layoutSelection: LayoutType.padding,
+              ),
             ],
             onTap: _onSelectTab,
           );
@@ -103,16 +127,25 @@ class _MainPageState extends State<MainPage> {
             type: BottomNavigationBarType.fixed,
             items: [
               _buildItem(
-                  icon: Icons.view_week, layoutSelection: LayoutType.pageView),
+                icon: Icons.view_week,
+                layoutSelection: LayoutType.pageView,
+              ),
               _buildItem(
-                  icon: Icons.format_list_bulleted,
-                  layoutSelection: LayoutType.list),
+                icon: Icons.format_list_bulleted,
+                layoutSelection: LayoutType.list,
+              ),
               _buildItem(
-                  icon: Icons.view_day, layoutSelection: LayoutType.slivers),
+                icon: Icons.view_day,
+                layoutSelection: LayoutType.slivers,
+              ),
               _buildItem(
-                  icon: Icons.gradient, layoutSelection: LayoutType.hero),
+                icon: Icons.gradient,
+                layoutSelection: LayoutType.hero,
+              ),
               _buildItem(
-                  icon: Icons.dashboard, layoutSelection: LayoutType.nested),
+                icon: Icons.dashboard,
+                layoutSelection: LayoutType.nested,
+              ),
             ],
             onTap: _onSelectTab,
           );

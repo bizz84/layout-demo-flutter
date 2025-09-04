@@ -34,10 +34,7 @@ class StackLayoutAttributesState extends State<StackLayoutAttributes> {
         Expanded(
           child: LayoutAttributeSelector(
             title: 'Type',
-            values: const [
-              'align',
-              'position',
-            ],
+            values: const ['align', 'position'],
             onIndexChanged: _updateType,
           ),
         ),

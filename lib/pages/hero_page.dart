@@ -18,7 +18,10 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -29,10 +32,7 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
         const DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.transparent,
-                Colors.black54,
-              ],
+              colors: [Colors.transparent, Colors.black54],
               stops: [0.5, 1.0],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -45,9 +45,11 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
           top: 4.0,
           child: SafeArea(
             child: IconButton(
-              icon: Icon(layoutGroup == LayoutGroup.nonScrollable
-                  ? Icons.filter_1
-                  : Icons.filter_2),
+              icon: Icon(
+                layoutGroup == LayoutGroup.nonScrollable
+                    ? Icons.filter_1
+                    : Icons.filter_2,
+              ),
               onPressed: onLayoutToggle,
             ),
           ),
@@ -110,9 +112,7 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _scrollView(context),
-    );
+    return Scaffold(body: _scrollView(context));
   }
 
   Widget _scrollView(BuildContext context) {
@@ -135,20 +135,18 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
             crossAxisSpacing: 0.0,
             childAspectRatio: 0.75,
           ),
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Padding(
-                padding: _edgeInsetsForIndex(index),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    assetNames[index % assetNames.length],
-                  ),
-                ),
-              );
-            },
-            childCount: assetNames.length * 2,
-          ),
+          delegate: SliverChildBuilderDelegate((
+            BuildContext context,
+            int index,
+          ) {
+            return Padding(
+              padding: _edgeInsetsForIndex(index),
+              child: Align(
+                alignment: Alignment.center,
+                child: Image.asset(assetNames[index % assetNames.length]),
+              ),
+            );
+          }, childCount: assetNames.length * 2),
         ),
       ],
     );
@@ -157,10 +155,18 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
   EdgeInsets _edgeInsetsForIndex(int index) {
     if (index % 2 == 0) {
       return const EdgeInsets.only(
-          top: 4.0, left: 8.0, right: 4.0, bottom: 4.0);
+        top: 4.0,
+        left: 8.0,
+        right: 4.0,
+        bottom: 4.0,
+      );
     } else {
       return const EdgeInsets.only(
-          top: 4.0, left: 4.0, right: 8.0, bottom: 4.0);
+        top: 4.0,
+        left: 4.0,
+        right: 8.0,
+        bottom: 4.0,
+      );
     }
   }
 }
